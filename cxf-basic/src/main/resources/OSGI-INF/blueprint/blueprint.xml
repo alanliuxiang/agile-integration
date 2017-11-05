@@ -26,6 +26,7 @@
            xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
            xmlns:jaxws="http://cxf.apache.org/blueprint/jaxws"
            xmlns:cxf="http://cxf.apache.org/blueprint/core"
+           xmlns:cm="http://aries.apache.org/blueprint/xmlns/blueprint-cm/v1.1.0"
            xsi:schemaLocation="
       http://cxf.apache.org/blueprint/core http://cxf.apache.org/schemas/blueprint/core.xsd
       http://cxf.apache.org/blueprint/jaxws http://cxf.apache.org/schemas/blueprint/jaxws.xsd">
@@ -44,6 +45,12 @@
         </cxf:features>
     </cxf:bus>
 
+    <cm:property-placeholder id="placeholder" persistent-id="org.fusesource.example.get.started">
+      <cm:default-properties>
+        <cm:property name="portNumber" value="8181"/>
+      </cm:default-properties>
+    </cm:property-placeholder>
+
     <!--
       Finally, we're configuring the actual JAX-WS endpoint, referring to our web service implementation class and the URI
       address we want to assign to our service.  The address is relative to the CXF servlet URI, with the default configuration
@@ -51,7 +58,7 @@
     -->
     <jaxws:endpoint id="helloWorld"
                     implementor="org.fusesource.example.HelloWorldImpl"
-                    address="/HelloWorld">
+                    address="http://0.0.0.0:${portNumber}/cxf/HelloWorld">
     </jaxws:endpoint>
 
 </blueprint>
