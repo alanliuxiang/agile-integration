@@ -13,14 +13,17 @@ public class MyRouteBuilder {
 
 			@Override
 			public void configure() throws Exception {
-				from("file:src/data?noop=true").to("file:target/messages");
+				from("file:src/data?noop=true")
+				.routeId("testRoute")
+				.log("${headers}")
+				.log("${body}")
+				.to("file:target/messages");
 			}});
 		
 		camelContext.start();
 		Thread.sleep(3000);
 		camelContext.stop();
 		
-		System.out.println("DONE");
 	}
 
 }

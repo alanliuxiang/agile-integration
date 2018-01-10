@@ -1,0 +1,11 @@
+= Camel Development Samples
+
+|===
+|Component| camelContext
+
+|http://camel.apache.org/http.html[HTTP]
+|link:src/main/resources/camelContext-http.xml[camelContext-http.xml], link:src/main/resources/camelContext-http-basic.xml[camelContext-http-basic.xml]
+
+|http://camel.apache.org/json.html[JSON]
+|link:src/main/resources/camelContext-json.xml[camelContext-json.xml]
+|===
