@@ -3,9 +3,12 @@
 |===
 |Component| camelContext
 
+|http://camel.apache.org/activemq.html[ActiveMQ]
+|link:src/main/resources/camelContext-activemq.xml[camelContext-activemq.xml]
+
 |http://camel.apache.org/http.html[HTTP]
 |link:src/main/resources/camelContext-http.xml[camelContext-http.xml], link:src/main/resources/camelContext-http-basic.xml[camelContext-http-basic.xml]
 
 |http://camel.apache.org/json.html[JSON]
-|link:src/main/resources/camelContext-json.xml[camelContext-json.xml]
+|link:src/main/resources/camelContext-json.xml[camelContext-json.xml], link:src/main/resources/camelContext-json-http.xml[camelContext-json-http.xml]
 |===
