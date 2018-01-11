@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<poline>
+	<_rowstamp>[0 0 0 0 0 3 -60 -73]</_rowstamp>
+	<category>STK</category>
+	<category_description>Stocked Item</category_description>
+	<chargestore>false</chargestore>
+	<consignment>false</consignment>
+	<conversion>1.0</conversion>
+	<description>Tubing, Copper- 1-1/16 In ID X .030 In Wall</description>
+	<enterby>LIBERI</enterby>
+	<enterdate>1997-12-08T17:27:00-05:00</enterdate>
+	<enteredastask>false</enteredastask>
+	<glcreditacct>6800-930-600</glcreditacct>
+	<gldebitacct>6600-800-800</gldebitacct>
+	<href>http://childkey#UE8vUE9MSU5FLzMvMTAwMC8wL0JFREZPUkQ-</href>
+	<inspectionrequired>false</inspectionrequired>
+	<isdistributed>false</isdistributed>
+	<issue>false</issue>
+	<itemnum>0-0048</itemnum>
+	<itemsetid>SET1</itemsetid>
+	<linecost>298.0</linecost>
+	<linetype>ITEM</linetype>
+	<loadedcost>298.0</loadedcost>
+	<localref>http://USO12DMXANY01.use.ucdp.net:9080/maximo/oslc/os/mxpo/_MTAwMC8wL0JFREZPUkQ-/poline/2-10003
+	</localref>
+	<mktplcitem>false</mktplcitem>
+	<orderqty>1.0</orderqty>
+	<orderunit>ROLL</orderunit>
+	<orgid>EAGLENA</orgid>
+	<pocost>
+		<e>
+			<_rowstamp>
+				<e>0 0 0 0 0 3 -60 13</e>
+			</_rowstamp>
+			<costlinenum>1</costlinenum>
+			<gldebitacct>6600-800-800</gldebitacct>
+			<href>http://childkey#UE8vUE9MSU5FL1BPQ09TVC8x</href>
+			<linecost>298.0</linecost>
+			<loadedcost>298.0</loadedcost>
+			<localref>http://USO12DMXANY01.use.ucdp.net:9080/maximo/oslc/os/mxpo/_MTAwMC8wL0JFREZPUkQ-/poline/2-10003/pocost/0-10004
+			</localref>
+			<orgid>EAGLENA</orgid>
+			<percentage>100.0</percentage>
+			<pocostid>10004</pocostid>
+			<polineid>10003</polineid>
+		</e>
+	</pocost>
+	<pocost_collectionref>http://USO12DMXANY01.use.ucdp.net:9080/maximo/oslc/os/mxpo/_MTAwMC8wL0JFREZPUkQ-/poline/2-10003/pocost
+	</pocost_collectionref>
+	<polineid>10003</polineid>
+	<polinenum>3</polinenum>
+	<prorateservice>false</prorateservice>
+	<receiptreqd>true</receiptreqd>
+	<receiptscomplete>true</receiptscomplete>
+	<receivedqty>1.0</receivedqty>
+	<receivedtotalcost>298.0</receivedtotalcost>
+	<receivedunitcost>298.0</receivedunitcost>
+	<rejectedqty>0.0</rejectedqty>
+	<restype>AUTOMATIC</restype>
+	<restype_description json_null="true" />
+	<storeloc>CENTRAL</storeloc>
+	<tax1>14.9</tax1>
+	<tax1code>MA</tax1code>
+	<tax2>0.0</tax2>
+	<tax3>0.0</tax3>
+	<tax4>0.0</tax4>
+	<tax5>0.0</tax5>
+	<taxed>false</taxed>
+	<taxexempt>false</taxexempt>
+	<tositeid>BEDFORD</tositeid>
+	<unitcost>298.0</unitcost>
+</poline>

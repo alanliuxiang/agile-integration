@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<poline>
+	<_rowstamp>[0 0 0 0 0 3 -60 101]</_rowstamp>
+	<catalogcode>RH-445R</catalogcode>
+	<category>STK</category>
+	<category_description>Stocked Item</category_description>
+	<chargestore>false</chargestore>
+	<consignment>false</consignment>
+	<conversion>1.0</conversion>
+	<description>Tubing, Copper-1 In ID X .030 In Wall</description>
+	<enterby>LIBERI</enterby>
+	<enterdate>1997-12-08T17:27:00-05:00</enterdate>
+	<enteredastask>false</enteredastask>
+	<glcreditacct>6800-930-600</glcreditacct>
+	<gldebitacct>6600-800-800</gldebitacct>
+	<href>http://childkey#UE8vUE9MSU5FLzEvMTAwMC8wL0JFREZPUkQ-</href>
+	<inspectionrequired>false</inspectionrequired>
+	<isdistributed>false</isdistributed>
+	<issue>false</issue>
+	<itemnum>560-00</itemnum>
+	<itemsetid>SET1</itemsetid>
+	<linecost>894.0</linecost>
+	<linetype>ITEM</linetype>
+	<loadedcost>894.0</loadedcost>
+	<localref>http://USO12DMXANY01.use.ucdp.net:9080/maximo/oslc/os/mxpo/_MTAwMC8wL0JFREZPUkQ-/poline/0-10001
+	</localref>
+	<manufacturer>P-H</manufacturer>
+	<mktplcitem>false</mktplcitem>
+	<modelnum>1A-030</modelnum>
+	<orderqty>3.0</orderqty>
+	<orderunit>ROLL</orderunit>
+	<orgid>EAGLENA</orgid>
+	<pocost>
+		<e>
+			<_rowstamp>
+				<e>0 0 0 0 0 3 -60 11</e>
+			</_rowstamp>
+			<costlinenum>1</costlinenum>
+			<gldebitacct>6600-800-800</gldebitacct>
+			<href>http://childkey#UE8vUE9MSU5FL1BPQ09TVC8x</href>
+			<linecost>894.0</linecost>
+			<loadedcost>894.0</loadedcost>
+			<localref>http://USO12DMXANY01.use.ucdp.net:9080/maximo/oslc/os/mxpo/_MTAwMC8wL0JFREZPUkQ-/poline/0-10001/pocost/0-10002
+			</localref>
+			<orgid>EAGLENA</orgid>
+			<percentage>100.0</percentage>
+			<pocostid>10002</pocostid>
+			<polineid>10001</polineid>
+		</e>
+	</pocost>
+	<pocost_collectionref>http://USO12DMXANY01.use.ucdp.net:9080/maximo/oslc/os/mxpo/_MTAwMC8wL0JFREZPUkQ-/poline/0-10001/pocost
+	</pocost_collectionref>
+	<polineid>10001</polineid>
+	<polinenum>1</polinenum>
+	<prorateservice>false</prorateservice>
+	<receiptreqd>true</receiptreqd>
+	<receiptscomplete>true</receiptscomplete>
+	<receivedqty>3.0</receivedqty>
+	<receivedtotalcost>894.0</receivedtotalcost>
+	<receivedunitcost>298.0</receivedunitcost>
+	<rejectedqty>0.0</rejectedqty>
+	<restype>AUTOMATIC</restype>
+	<restype_description json_null="true" />
+	<storeloc>CENTRAL</storeloc>
+	<tax1>44.7</tax1>
+	<tax1code>MA</tax1code>
+	<tax2>0.0</tax2>
+	<tax3>0.0</tax3>
+	<tax4>0.0</tax4>
+	<tax5>0.0</tax5>
+	<taxed>false</taxed>
+	<taxexempt>false</taxexempt>
+	<tositeid>BEDFORD</tositeid>
+	<unitcost>298.0</unitcost>
+</poline>
