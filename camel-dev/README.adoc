@@ -6,7 +6,7 @@
 
 |http://camel.apache.org/activemq.html[ActiveMQ]
 |
-*link:src/main/resources/camelContext-activemq.xml[camelContext-activemq.xml]
+* link:src/main/resources/camelContext-activemq.xml[camelContext-activemq.xml]
 |
 * Poll JSON data from a REST Service, split the result of REST service, route the splits to AMQ topic
 
@@ -21,7 +21,7 @@
 |http://camel.apache.org/json.html[JSON]
 |
 * link:src/main/resources/camelContext-json.xml[camelContext-json.xml] 
-*link:src/main/resources/camelContext-json-http.xml[camelContext-json-http.xml]
+* link:src/main/resources/camelContext-json-http.xml[camelContext-json-http.xml]
 |
 * Read json from file, split the json
 * Read json from http rest, split the json
