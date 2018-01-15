@@ -79,6 +79,16 @@
     </dependency>
     
     <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-jdbc</artifactId>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.apache.derby</groupId>
+      <artifactId>derby</artifactId>
+    </dependency>
+    
+    <dependency>
       <groupId>xom</groupId>
       <artifactId>xom</artifactId>
       <version>1.2.5</version>
