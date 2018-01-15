@@ -8,6 +8,8 @@ public class MyRouteBuilder {
 	
 	public static void main(String[] arvs) throws Exception {
 		
+		final OutputProcessor p = new OutputProcessor();
+		
 		CamelContext camelContext = new DefaultCamelContext();
 		camelContext.addRoutes(new RouteBuilder(){
 
@@ -15,6 +17,7 @@ public class MyRouteBuilder {
 			public void configure() throws Exception {
 				from("file:src/data?noop=true")
 				.routeId("testRoute")
+				.process(p)
 				.log("${headers}")
 				.log("${body}")
 				.to("file:target/messages");

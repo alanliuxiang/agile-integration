@@ -2,11 +2,21 @@
 <beans xmlns="http://www.springframework.org/schema/beans"
     xmlns:camel="http://camel.apache.org/schema/spring"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd                          http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+    <bean
+        class="org.apache.camel.examples.processor.DBPropertiesProcessor" id="dbPropsProcessor"/>
+    <!--  -->
+    <bean id="mxpoProperties" class="org.apache.camel.component.properties.PropertiesComponent">
+        <property name="location" value="src/input/properties/mxpoProperties.properties"/>
+    </bean>
+    
     <camelContext id="testJsonContext" trace="false" xmlns="http://camel.apache.org/schema/spring">
         <dataFormats>
             <json id="mxpoData" library="Jackson" unmarshalTypeName="org.apache.camel.examples.pojo.Mxpo"/>
             <json id="polineData" library="Jackson" unmarshalTypeName="org.apache.camel.examples.pojo.Poline"/>
         </dataFormats>
+        <!--  
+        <camel:propertyPlaceholder id="mxpoProperties" location="com/redhat/poc/mxpoProperties.properties"></camel:propertyPlaceholder>
+        -->
         <route id="testJsonRoute">
             <from id="_from1" uri="file:src/input/json?noop=true"/>
             <log id="logger" message="${body}"/>
@@ -21,7 +31,13 @@
         </route>
         <route id="testJsonRouteProcessing">
             <from id="nestedJsonProcessing" uri="direct:jsonSplit"/>
+            <!--  
+            <marshal id="mapToJson" ref="polineData"/>
+            <unmarshal id="_unmarshal1" ref="polineData"/>
+            -->
+            <log id="_log1" message="${mxpoProperties:testKey}"/>
             <log id="_log1" message="${body}"/>
+            <to id="_to2" uri="dbPropsProcessor"/>
         </route>
     </camelContext>
 </beans>

@@ -8,11 +8,11 @@
             <xmljson encoding="UTF-8" id="xmljson" rootName="poline"/>
         </dataFormats>
         <route id="testxmljsonRoute">
-            <from id="_from1" uri="file:src/input/json?noop=true"/>
             <!-- 
             <unmarshal id="_unmarshal0" ref="xmljson"/>
             <log id="logger1" message="${body}"/>
             -->
+            <from id="_from1" uri="file:src/input/json?noop=true"/>
             <log id="logger1" message="${body}"/>
             <split id="_split1">
                 <jsonpath>$.poline[*]</jsonpath>

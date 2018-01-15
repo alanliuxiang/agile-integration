@@ -8,7 +8,7 @@ public class CamelDataFormatJSON {
 
 		starter("camelContext-json.xml", 1000 * 3);
 		
-		starter("camelContext-json-http.xml", 1000 * 3);
+//		starter("camelContext-json-http.xml", 1000 * 3);
 	}
 
 }
