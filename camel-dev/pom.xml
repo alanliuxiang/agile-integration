@@ -80,12 +80,13 @@
     
     <dependency>
       <groupId>org.apache.camel</groupId>
-      <artifactId>camel-jdbc</artifactId>
+      <artifactId>camel-sql</artifactId>
     </dependency>
     
     <dependency>
-      <groupId>org.apache.derby</groupId>
-      <artifactId>derby</artifactId>
+      <groupId>mysql</groupId>
+      <artifactId>mysql-connector-java</artifactId>
+      <version>5.1.44</version>
     </dependency>
     
     <dependency>

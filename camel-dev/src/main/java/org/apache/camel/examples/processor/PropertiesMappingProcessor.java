@@ -3,9 +3,8 @@ package org.apache.camel.examples.processor;
 import java.util.Map;
 
 import org.apache.camel.Exchange;
-import org.apache.camel.Processor;
 
-public class DBPropertiesProcessor implements Processor {
+public class PropertiesMappingProcessor extends MappingProcessor {
 	
 	private static final String RESTTYPE_DESC = "restype_description";
 	private static final String CATEGORY_DESC = "category_description";
@@ -23,12 +22,17 @@ public class DBPropertiesProcessor implements Processor {
 			
 			String newDesc = categoryTypeDesc + ": " + currentDesc;
 			map.put(CATEGORY_DESC, newDesc);
+			exchange.setProperty(PROPS_MAPPING, clone(map));
+			exchange.setOut(exchange.getIn());
 		} catch (Exception e) {
 			throw new RuntimeException("External Properties Mapping Exception, " + e.getMessage());
 		}
 		
-		exchange.setOut(exchange.getIn());
+		
+		
 		
 	}
+
+	
 
 }
