@@ -12,5 +12,8 @@
     <module>cxf-basic</module>
     <module>camel-basic</module>
     <module>features</module>
+
+    <module>mock-rest</module>
+    <module>camel-rest</module>
   </modules>
 </project>

@@ -65,6 +65,11 @@
     
     <dependency>
       <groupId>org.apache.camel</groupId>
+      <artifactId>camel-sql</artifactId>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.apache.camel</groupId>
       <artifactId>camel-jsonpath</artifactId>
     </dependency>
     
@@ -74,13 +79,9 @@
     </dependency>
     
     <dependency>
-      <groupId>org.apache.camel</groupId>
-      <artifactId>camel-xmljson</artifactId>
-    </dependency>
-    
-    <dependency>
-      <groupId>org.apache.camel</groupId>
-      <artifactId>camel-sql</artifactId>
+      <groupId>org.fusesource</groupId>
+      <artifactId>camel-sap</artifactId>
+      <version>6.3.0.redhat-262</version>
     </dependency>
     
     <dependency>
@@ -89,6 +90,10 @@
       <version>5.1.44</version>
     </dependency>
     
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-xmljson</artifactId>
+    </dependency>
     <dependency>
       <groupId>xom</groupId>
       <artifactId>xom</artifactId>
