@@ -15,5 +15,6 @@
 
     <module>mock-rest</module>
     <module>camel-rest</module>
+    <module>eips</module>
   </modules>
 </project>

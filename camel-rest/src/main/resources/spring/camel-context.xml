@@ -39,7 +39,6 @@
             <convertBodyTo id="_convertBodyTo1" type="String"/>
             <log id="greetingLogger" message="${body}"/>
         </route>
-        
         <route id="dateRoute">
             <from id="_from2" uri="direct:getTime"/>
             <removeHeaders id="_removeHeaders2" pattern="CamelHttp*"/>
