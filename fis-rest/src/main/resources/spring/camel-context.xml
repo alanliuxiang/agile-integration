@@ -35,7 +35,7 @@
                 <constant>GET</constant>
             </setHeader>
             <log id="greetingLogger" message="Forward the request"/>
-            <toD id="_toD1" uri="http4://mock-rest-service-mock-rest.192.168.42.107.nip.io/quickies/greeting/hi/${headers.name}?bridgeEndpoint=true"/>
+            <toD id="_toD1" uri="http4://mock-rest-service-mock.192.168.42.107.nip.io/quickies/greeting/hi/${headers.name}?bridgeEndpoint=true"/>
             <convertBodyTo id="_convertBodyTo1" type="String"/>
             <log id="greetingLogger" message="${body}"/>
         </route>
@@ -46,7 +46,7 @@
                 <constant>GET</constant>
             </setHeader>
             <log id="dateLogger" message="Forward the request"/>
-            <toD id="_toD2" uri="http4://mock-rest-service-mock-rest.192.168.42.107.nip.io/quickies/greeting/getTime?bridgeEndpoint=true"/>
+            <toD id="_toD2" uri="http4://mock-rest-service-mock.192.168.42.107.nip.io/quickies/greeting/getTime?bridgeEndpoint=true"/>
             <convertBodyTo id="_convertBodyTo2" type="String"/>
             <log id="dateLogger" message="${body}"/>
         </route>

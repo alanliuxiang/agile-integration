@@ -14,7 +14,8 @@
     <module>features</module>
 
     <module>mock-rest</module>
-    <module>camel-rest</module>
-    <module>eips</module>
+    <module>mock-soap</module>
+    <module>fis-rest</module>
+    <module>fis-eips</module>
   </modules>
 </project>
