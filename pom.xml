@@ -17,5 +17,6 @@
     <module>mock-soap</module>
     <module>fis-rest</module>
     <module>fis-eips</module>
+    <module>fis-soap2rest</module>
   </modules>
 </project>

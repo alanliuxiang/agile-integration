@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:camel="http://camel.apache.org/schema/spring"
+    xmlns:cxf="http://camel.apache.org/schema/cxf"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="             http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd             http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd      http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf-spring.xsd">
+    <!-- Define a traditional camel context here -->
+    <cxf:cxfEndpoint
+        address="http://mock-soap-service-mock.192.168.42.107.nip.io:80/services"
+        endpointName="CountriesPort" id="getCountry"
+        serviceClass="org.jboss.fis.mock_soap_service.CountriesPort"
+        serviceName="CountriesPortService"
+        wsdlURL="http://mock-soap-service-mock.192.168.42.107.nip.io/services/countries.wsdl" xmlns:tns="http://jboss.org/fis/mock-soap-service"/>
+    
+    <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
+        <restConfiguration component="netty4-http" host="0.0.0.0" port="8080"/>
+        <rest path="/getCountry">
+            <post bindingMode="json" consumes="application/json"
+                type="org.jboss.fis.mock_soap_service.Country" uri="hello">
+                <to uri="direct:processrest"/>
+            </post>
+        </rest>
+        <route id="simple-route">
+            <from id="_from1" uri="direct:processrest"/>
+            <marshal id="_marshal1">
+                <soapjaxb contextPath="org.jboss.fis.mock_soap_service"/>
+            </marshal>
+            <to id="_to3" uri="cxf:bean:getCountry?dataFormat=MESSAGE"/>
+            <unmarshal id="_marshal2">
+                <soapjaxb contextPath="org.jboss.fis.mock_soap_service"/>
+            </unmarshal>
+            <marshal id="_marshal3">
+                <json library="Jackson"/>
+            </marshal>
+            <log id="route-log" message=">>> ${body}"/>
+        </route>
+    </camelContext>
+</beans>
