@@ -4,8 +4,8 @@ import javax.annotation.PostConstruct;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.jboss.fuse.model.Country;
-import org.jboss.fuse.model.Currency;
+import org.jboss.fuse.jaxb.Country;
+import org.jboss.fuse.jaxb.Currency;
 import org.springframework.stereotype.Component;
 import org.springframework.util.Assert;
 

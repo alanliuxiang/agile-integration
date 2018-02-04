@@ -2,7 +2,7 @@ package org.jboss.fuse;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import org.jboss.fuse.model.GetCountryRequest;
+import org.jboss.fuse.jaxb.GetCountryRequest;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

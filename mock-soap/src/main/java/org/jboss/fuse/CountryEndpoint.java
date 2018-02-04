@@ -1,7 +1,7 @@
 package org.jboss.fuse;
 
-import org.jboss.fuse.model.GetCountryRequest;
-import org.jboss.fuse.model.GetCountryResponse;
+import org.jboss.fuse.jaxb.GetCountryRequest;
+import org.jboss.fuse.jaxb.GetCountryResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.ws.server.endpoint.annotation.Endpoint;
 import org.springframework.ws.server.endpoint.annotation.PayloadRoot;
