@@ -20,7 +20,7 @@ public class CountryRepository {
 		cn.setName("China");
 		cn.setCapital("Beijing");
 		cn.setCurrency(Currency.RMB);
-		cn.setPopulation(136704314);
+		cn.setPopulation(1360704314);
 		
 		countries.put(cn.getName(), cn);
 		

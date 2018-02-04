@@ -12,12 +12,22 @@
     <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
         <restConfiguration component="netty4-http" host="0.0.0.0" port="10000"/>
         <rest path="/rest">
+            <get uri="/ping">
+                <to uri="direct:ping"/>
+            </get>
             <post bindingMode="json" consumes="application/json"
                 type="org.jboss.fis.mock_soap_service.GetCountryRequest" uri="getCountry">
                 <to uri="direct:processrest"/>
             </post>
         </rest>
-        <route id="simple-route">
+        <route id="ping-route">
+            <from id="_from2" uri="direct:ping"/>
+            <transform>
+               <constant>Success!</constant>
+            </transform>
+            <log id="log" message=">>> ${body}"/>
+        </route>
+        <route id="getcountry-route">
             <from id="_from1" uri="direct:processrest"/>
             <marshal id="_marshal1">
                 <soapjaxb contextPath="org.jboss.fis.mock_soap_service"/>
