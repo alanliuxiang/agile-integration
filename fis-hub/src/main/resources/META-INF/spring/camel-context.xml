@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:camel="http://camel.apache.org/schema/spring"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd                            http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+    <bean class="com.redhat.poc.processor.MxpoHrefSetProcessor" id="mxpoHrefSetProcessor"/>
+    <bean class="com.redhat.poc.processor.PropertiesMappingProcessor" id="propsMappingProcessor"/>
+    <bean class="com.redhat.poc.processor.DBMappingProcessor" id="dbMappingProcessor"/>
+    <bean class="com.redhat.poc.processor.SetPropertiesProcessor" id="setPropertiesProcessor"/>
+    
+    <bean
+        class="org.apache.camel.component.servlet.CamelHttpTransportServlet" id="camelHttpTransportServlet"/>
+    <bean
+        class="org.springframework.boot.web.servlet.ServletRegistrationBean" id="servlet">
+        <property name="name" value="CamelServlet"/>
+        <property name="servlet" ref="camelHttpTransportServlet"/>
+        <property name="urlMappings" value="/hub/*"/>
+    </bean>
+    
+    <bean class="com.mysql.jdbc.jdbc2.optional.MysqlDataSource" id="dataSource">
+        <property name="serverName" value="#{systemProperties['MYSQL_HOSTNAME'] ?: 'mysql'}"/>
+        <property name="databaseName" value="#{systemProperties['MYSQL_DBNAME'] ?: 'test'}"/>
+        <property name="port" value="#{systemProperties['MYSQL_DBPORT'] ?: '3306'}"/>
+        <property name="user" value="#{systemProperties['MYSQL_USER'] ?: 'test_user'}"/>
+        <property name="password" value="#{systemProperties['MYSQL_PASSWORD'] ?: 'test_pass'}"/>
+    </bean>
+    <bean class="org.apache.camel.component.sql.SqlComponent" id="sql">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    
+    <camelContext id="integrationHubContext" xmlns="http://camel.apache.org/schema/spring">
+        
+        <propertyPlaceholder id="mxpoProperties" location="classpath:properties/mxpoProperties.properties"/>
+        
+        <!-- 
+            The dataFormats are use to marshal Map to JSON format
+         -->
+        <dataFormats>
+            <json id="mxpoData" library="Jackson" unmarshalTypeName="com.redhat.poc.maximo.model.Mxpo"/>
+            <json id="mxpoUrlData" library="Jackson" unmarshalTypeName="com.redhat.poc.maximo.model.Member"/>
+            <json id="polineData" library="Jackson" unmarshalTypeName="com.redhat.poc.maximo.model.Poline"/>
+            <json id="mxpoMap" library="Jackson"/>
+        </dataFormats>
+        
+        <restConfiguration apiContextPath="api-docs" bindingMode="auto"
+            component="servlet" contextPath="/poc">
+            <apiProperty key="cors" value="true"/>
+            <apiProperty key="api.title" value="POC API"/>
+            <apiProperty key="api.version" value="1.0.0"/>
+        </restConfiguration>
+        <rest path="/services">
+            <get uri="mxpo">
+                <description>Consuming Maximo Rest</description>
+                <to uri="direct:maximoRestTrigger"/>
+            </get>
+        </rest>
+        
+        
+        <route id="maximoRestConsumerRoute">
+            <!--  
+            <to id="_to1" uri="http://uso12dmxany01.use.ucdp.net:9080/maximo/oslc/os/mxpo?lean=1&amp;_lid=mxintadm&amp;_lpwd=mxintadm"/>
+            <to id="_to1" uri="http://maximo-mock.192.168.42.107.nip.io/maximo/oslc/os/mxpo?lean=1&amp;_lid=lid&amp;_lpwd=redhat"/>
+            -->
+            <from id="_from1" uri="timer://maximoRestConsumer?fixedRate=true&amp;period=600000&amp;repeatCount=10"/>
+            <to id="_to1" uri="http://maximo-mock.192.168.42.107.nip.io/maximo/oslc/os/mxpo?lean=1&amp;_lid=lid&amp;_lpwd=redhat"/>
+            <convertBodyTo id="_convertBodyTo1" type="java.lang.String"/>
+            <log id="maximoRestConsumerLogger" message="IBM Maximo returned mopo links: ${body}"/>
+            <split id="_split1">
+                <jsonpath>$.member[*]</jsonpath>
+                <to id="_to2" uri="direct:mxpoJsonPolling"/>
+            </split>
+        </route>
+        
+        <route id="mxpoPollingRoute">
+            <from id="mxpojsonPolling" uri="direct:mxpoJsonPolling"/>
+            <to id="mxpoPollTo1" uri="mxpoHrefSetProcessor"/>
+            <log id="mxpoPollingLogger" message="Polling Mxpo Json Via: ${headers.href}"/>
+            <toD id="mxpoPollToD1" uri="http://${headers.mxpoURL}"/>
+            <log id="mxpoPollingLogger" message="Polling Mxpo Success!"/>
+            <unmarshal id="mxpoPollingUnmarshal" ref="mxpoData"/>
+            <log id="mxpoPollingLogger" message="Unmarshal Mxpo result to ${body}"/>
+            <log id="mxpoPollingLogger" message="Forward to execute external properties mapping"/>
+            <to id="mxpoPollTo2" uri="direct:externalPropertiesMapping"/>
+        </route>
+        
+        <!--
+            The 'propertiesMappingRoute' route use the external properties to mapping the json attribute,
+            after the external properties mapping, the json will be send to 'dbMappingRoute'  
+         -->
+        <route id="propertiesMappingRoute">
+            <from id="jsonSplit" uri="direct:externalPropertiesMapping"/>
+            <log id="propertiesMappingLogger" message="Starting properties mapping"/>
+            <setHeader headerName="restype_description" id="_setHeader1">
+                <simple>{{restype_description}}</simple>
+            </setHeader>
+            <setHeader headerName="category_description" id="_setHeader2">
+                <simple>{{category_description}}</simple>
+            </setHeader>
+            <to id="propertiesMappingTo1" uri="propsMappingProcessor"/>
+            <log id="propertiesMappingLogger" message="Finished properties mapping"/>
+            <log id="propertiesMappingLogger" message="Forward to execute external DB mapping"/>
+            <to id="propertiesMappingTo2" uri="direct:externalDBMapping"/>
+        </route>
+        
+        <!-- 
+            The 'dbMappingRoute' route will lookup external database further mapping the json attribute,
+            after the database mapping, the json will be send to 'publishResultRoute'
+         -->
+        <route id="dbMappingRoute">
+            <from id="propertiesMapping" uri="direct:externalDBMapping"/>
+            <log id="dbMappingLogger" message="Starting DB mapping"/>
+            <to id="dbMappingTo2" uri="sql:SELECT * FROM TAXSMAPPING;"/>
+            <to id="dbMappingTo3" uri="dbMappingProcessor"/>
+            <log id="dbMappingLogger" message="Finished DB mapping"/>
+            <log id="dbMappingLogger" message="Forward the mapping result to next route"/>
+            <to id="_to7" uri="direct:pulishJsonResult"/>
+        </route>
+        
+        <!-- 
+            The 'publishResultRoute' route will publish the final(transformed, mapped) json to a Message Topic
+         -->
+        <route id="publishResultRoute">
+            <from id="dbMapping" uri="direct:pulishJsonResult"/>
+            <!-- -->
+            <marshal id="mapToJson" ref="mxpoData"/>
+            <log id="publishResultLogger" message="The final json: ${body}"/>
+            <!--  -->
+            <to id="publishResultTo" uri="activemq:topic:events.newPoline"/>
+            
+            <log id="publishResultLogger" message="Json message sent to topic:events.newPoline"/>
+        </route>
+        
+        <route id="maximoRestTriggerRoute">
+            <from id="_from2" uri="direct:maximoRestTrigger"/>
+            <log id="maximoRestTriggerLogger" message="Trigger a mxpo consuming"/>
+            <!--  
+            <to id="maximoRestTriggerTo" uri="direct:mxpoJsonPolling"/>
+            -->
+            <setBody><simple>Trigger a mxpo consuming success</simple></setBody>
+            
+        </route>
+        
+        
+    </camelContext>
+</beans>

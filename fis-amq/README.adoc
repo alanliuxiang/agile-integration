@@ -1,0 +1,9 @@
+= FIS AMQ
+
+[source, java]
+----
+$ oc new-project fis
+$ oc create -f files/amq63-basic.json
+$ oc new-app --template=amq63-basic --param=MQ_USERNAME=admin --param=MQ_PASSWORD=admin
+----
+
