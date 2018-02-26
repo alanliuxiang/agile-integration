@@ -54,12 +54,12 @@
             </get>
         </rest>
         
-        
-        <route id="maximoRestConsumerRoute">
-            <!--  
+        <!--  
             <to id="_to1" uri="http://uso12dmxany01.use.ucdp.net:9080/maximo/oslc/os/mxpo?lean=1&amp;_lid=mxintadm&amp;_lpwd=mxintadm"/>
             <to id="_to1" uri="http://maximo-mock.192.168.42.107.nip.io/maximo/oslc/os/mxpo?lean=1&amp;_lid=lid&amp;_lpwd=redhat"/>
             -->
+        
+        <route id="maximoRestConsumerRoute">
             <from id="_from1" uri="timer://maximoRestConsumer?fixedRate=true&amp;period=600000&amp;repeatCount=10"/>
             <to id="_to1" uri="http://maximo-mock.192.168.42.107.nip.io/maximo/oslc/os/mxpo?lean=1&amp;_lid=lid&amp;_lpwd=redhat"/>
             <convertBodyTo id="_convertBodyTo1" type="java.lang.String"/>
@@ -68,6 +68,25 @@
                 <jsonpath>$.member[*]</jsonpath>
                 <to id="_to2" uri="direct:mxpoJsonPolling"/>
             </split>
+        </route>
+        
+        <route id="maximoRestTriggerRoute">
+            <from id="_from2" uri="direct:maximoRestTrigger"/>
+            <log id="maximoRestTriggerLogger" message="Trigger a mxpo consuming"/>
+            <!--  
+            <removeHeaders id="maximoRestTriggerHeaders1" pattern="CamelHttp*"/>
+            <setHeader headerName="CamelHttpMethod" id="maximoRestTriggerHeader1">
+                <constant>GET</constant>
+            </setHeader>
+            <to id="maximoRestTriggerTo1" uri="http://maximo-mock.192.168.42.107.nip.io/maximo/oslc/os/mxpo?lean=1&amp;_lid=lid&amp;_lpwd=redhat"/>
+            <convertBodyTo id="maximoRestTriggerconvertBodyTo" type="java.lang.String"/>
+            <log id="maximoRestTriggerLogger" message="IBM Maximo returned mopo links: ${body}"/>
+            <split id="maximoRestTriggerSplit">
+                <jsonpath>$.member[*]</jsonpath>
+                <to id="maximoRestTriggerTo2" uri="direct:mxpoJsonPolling"/>
+            </split>
+            -->
+            <setBody><simple>Trigger a mxpo consuming success</simple></setBody>
         </route>
         
         <route id="mxpoPollingRoute">
@@ -128,17 +147,6 @@
             
             <log id="publishResultLogger" message="Json message sent to topic:events.newPoline"/>
         </route>
-        
-        <route id="maximoRestTriggerRoute">
-            <from id="_from2" uri="direct:maximoRestTrigger"/>
-            <log id="maximoRestTriggerLogger" message="Trigger a mxpo consuming"/>
-            <!--  
-            <to id="maximoRestTriggerTo" uri="direct:mxpoJsonPolling"/>
-            -->
-            <setBody><simple>Trigger a mxpo consuming success</simple></setBody>
-            
-        </route>
-        
         
     </camelContext>
 </beans>
