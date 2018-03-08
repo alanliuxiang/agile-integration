@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:camel="http://camel.apache.org/schema/spring"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+    
+    <camelContext id="queueTargetContext" xmlns="http://camel.apache.org/schema/spring">
+        <dataFormats>
+            <xmljson encoding="UTF-8" id="xmljson" rootName="poline"/>
+        </dataFormats>
+        <route id="jsonToXmlRoute">
+            <from id="_from1" uri="activemq:topic:events.newPoline"/>
+            <log id="logger" message="Receive a message from topic:events.newPoline"/>
+            <unmarshal id="jsonToXML" ref="xmljson"/>
+            <log id="logger" message="Transfer to xml: ${body}"/>
+            <to id="publishResultTo" uri="activemq:queue:activePoline"/>
+            <log id="logger" message="Send XML Event to queue:activePoline"/>
+        </route>
+    </camelContext>
+</beans>

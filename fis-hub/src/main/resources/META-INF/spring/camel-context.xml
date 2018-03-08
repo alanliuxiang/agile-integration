@@ -86,7 +86,7 @@
                 <to id="maximoRestTriggerTo2" uri="direct:mxpoJsonPolling"/>
             </split>
             -->
-            <setBody><simple>Trigger a mxpo consuming success</simple></setBody>
+            <setBody><simple>[{"id":1,"content":"success"}, {"id":2,"content":"success"}]</simple></setBody>
         </route>
         
         <route id="mxpoPollingRoute">
