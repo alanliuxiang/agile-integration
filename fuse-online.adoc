@@ -5,7 +5,7 @@ Fuse Online URL: https://console.fuse-ignite.openshift.com
 
 == 准备
 
-1. AMQ Broker
+=== AMQ Broker
 
 `Connections` → `Create Connection` → `AMQ`
 
@@ -15,14 +15,14 @@ Fuse Online URL: https://console.fuse-ignite.openshift.com
 
     Connection Name - AMQ Broker 1
 
-2. Damage Reporter
+=== Damage Reporter
 
 `Customizations` → `Extensions` → `Import Extension`
 
     $ ls /home/kylin/tmp/damageReporter/
     damage-reporter-1.2.9.jar
 
-3. TO DO APP
+=== TO DO APP
 
 `Customizations` → `API Client Connectors` → `Create API Connector` → `Use a URL`
 
