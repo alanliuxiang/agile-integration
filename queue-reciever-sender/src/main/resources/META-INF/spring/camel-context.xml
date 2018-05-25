@@ -3,37 +3,35 @@
     xmlns:camel="http://camel.apache.org/schema/spring"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd                            http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
     <bean class="org.apache.activemq.camel.component.ActiveMQComponent" id="activemq">
-        <property name="brokerURL" value="#{systemProperties['AMQ_BROKER_URL'] ?: 'tcp://localhost:61616'}"/>
+        <property name="brokerURL" value="#{systemProperties['AMQ_BROKER_URL'] ?: 'tcp://172.30.254.157:61616'}"/>
         <property name="userName" value="#{systemProperties['AMQ_USER'] ?: 'admin'}"/>
         <property name="password" value="#{systemProperties['AMQ_PASSWORD'] ?: 'admin'}"/>
     </bean>
     <camelContext id="queueTargetContext" xmlns="http://camel.apache.org/schema/spring">
-        
         <route id="logisticsRoute">
             <from id="_from1" uri="activemq:queue:logistics.newFreight"/>
             <log id="logger" message="Receive a message from queue:[logistics.newFreight]"/>
             <log id="logger" message="${body}"/>
-            <setHeader headerName="CamelHttpMethod">
-              <constant>POST</constant> 
+            <setHeader headerName="CamelHttpMethod" id="_setHeader1">
+                <constant>POST</constant>
             </setHeader>
-            <setHeader headerName="Authorization">
-              <constant>Basic cmhkbUFkbWluOnBhc3N3b3JkMSE=</constant> 
+            <setHeader headerName="Authorization" id="_setHeader2">
+                <constant>Basic a3lsaW46cGFzc3dvcmQxIQ==</constant>
             </setHeader>
-            <setHeader headerName="accept">
-              <constant>application/json</constant> 
+            <setHeader headerName="accept" id="_setHeader3">
+                <constant>application/json</constant>
             </setHeader>
-            <setHeader headerName="content-type">
-              <constant>application/json</constant> 
+            <setHeader headerName="content-type" id="_setHeader4">
+                <constant>application/json</constant>
             </setHeader>
             <log id="logger" message="Send newFreight to BRMS"/>
-            <to id="_to1" uri="http://localhost:8080/kie-server/services/rest/server/containers/instances/loan-application_2.0"/>
+            <to id="_to1" uri="http://172.30.254.157:8080/kie-server/services/rest/server/containers/instances/logistics-freight-management_1.0.1"/>
             <log id="logger" message="Response from BRMS Success"/>
-            <!-- <log id="logger" message="${body}"/>  -->      
-            <setBody>
+            <setBody id="_setBody1">
                 <simple>${body}</simple>
-            </setBody>     
+            </setBody>
             <to id="publishResultTo" uri="activemq:queue:logistics.results"/>
-            <log id="logger" message="BRMS response be sent to queue:[logistics.results]"/> 
+            <log id="logger" message="BRMS response be sent to queue:[logistics.results]"/>
         </route>
     </camelContext>
 </beans>
