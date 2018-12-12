@@ -1,3 +1,5 @@
 = Summary
 
-. link:docker/docker.adoc[Docker]
+. link:README.adoc[INTRODUCTION]
+. link:fuse/README.adoc[Fuse 7 基础]
+.. link:fuse/software.adoc[软件安装]

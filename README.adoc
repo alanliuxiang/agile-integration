@@ -1,3 +1,2 @@
-= fuse-get-started
+= 敏捷集成
 
-Source code for https://access.redhat.com/documentation/en/red-hat-jboss-fuse/6.3/paged/developing-and-deploying-applications/index[Red Hat JBoss Fuse 6.3 Developing and Deploying Applications]
