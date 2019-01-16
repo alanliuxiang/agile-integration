@@ -1,0 +1,72 @@
+= Migrate Legacy SOAP Services
+:toc: manual
+
+== Overview
+
+In this lab, you develop a camel route to migrate legacy SOAP services to provide a REST API wrapper using camel.
+
+== Goals
+
+* Create REST API for the Customer SOAP service from previous lab.
+* Design Apache Camel route that exposes REST API consuming JSON.
+* Use the Fuse Tooling in Red Hat Developer Studio to create `wsdl2rest` mapping.
+* Deploy and test the solution.
+
+== 步骤
+
+* Right-click the legacy-soap-rest-wrapper in the Fuse Integration perspective and select `New` →` Camel Rest DSL from WSDL` or click `File` → `New` → `Other…`, `Red Hat Fuse` → `Camel Rest DSL from WSDL`.
+* 在弹出的对话框中使用默认配置项，直到点击 `Finish` 完成。
+* 完成后会生成相关配置文件的 POJO 类。
+
+== 查看生成的 camelContext
+
+[source, xml]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:cxf="http://camel.apache.org/schema/cxf"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="         http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd         http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf.xsd         http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+    <camelContext id="cxfrs" xmlns="http://camel.apache.org/schema/spring">
+        <dataFormats>
+            <xmljson id="xmljson"/>
+        </dataFormats>
+        <restConfiguration bindingMode="json" component="jetty"
+            host="localhost" port="8081"/>
+        <rest id="rest-84fe10aa-e020-4536-a70d-39b83c70f4e4" path="/jaxrs">
+            <put consumes="application/json"
+                id="put-29c1f850-a6a2-42b2-83a6-f98e5f9387e3"
+                outType="org.fuse.usecase.service.CorporateAccount"
+                type="org.fuse.usecase.service.Account" uri="/account">
+                <to uri="direct:updateAccount"/>
+            </put>
+        </rest>
+        <route id="updateAccount">
+            <from id="_from1" uri="direct:updateAccount"/>
+            <log id="_log1" loggingLevel="INFO" message="updateAccount"/>
+            <to id="_to1" uri="cxf://http://soap-service-user4-fuse.apps.0d94.openshift.opentlc.com/ws/customerService?serviceClass=org.fuse.usecase.service.CustomerWS&amp;defaultOperationName=updateAccount"/>
+            <setHeader headerName="Content-Type" id="_setHeader1">
+                <constant>application/json</constant>
+            </setHeader>
+            <setBody id="_setBody1">
+                <simple>${body[0]}</simple>
+            </setBody>
+        </route>
+    </camelContext>
+</beans>
+----
+
+== 本地运行及测试
+
+[source, java]
+.*1. 本地运行*
+----
+$ cd fuse-get-started/legacy-soap-rest-wrapper/
+$ mvn spring-boot:run -Dfabric8.skip=true
+----
+
+[source, java]
+.*2. 访问 Rest 服务测试*
+----
+
+----
+
