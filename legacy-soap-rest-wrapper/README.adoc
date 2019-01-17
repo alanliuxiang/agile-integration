@@ -67,6 +67,28 @@ $ mvn spring-boot:run -Dfabric8.skip=true
 [source, java]
 .*2. 访问 Rest 服务测试*
 ----
+$ curl -k http://localhost:9090/jaxrs/ping
+"Success!"
 
+$ curl -k http://localhost:9090/jaxrs/account -X PUT  -d '{"company":{"name":"Rotobots","geo":"NA","active":true},"contact":{"firstName":"Bill","lastName":"Smith","streetAddr":"100 N Park Ave.","city":"Phoenix","state":"AZ","zip":"85017","phone":"602-555-1100"}}' -H 'content-type: application/json'
+{"company":{"active":true,"geo":"NA","name":"Rotobots"},"contact":{"city":"Phoenix","firstName":"Bill","lastName":"Smith","phone":"602-555-1100","state":"AZ","streetAddr":"100 N Park Ave.","zip":"85017"},"id":32,"salesContact":"James Strachan"}
 ----
 
+== 远程 OpenShift 上运行
+
+[source, java] 
+.*1. 部署到 OpenShift*
+----
+$ cd fuse-get-started/legacy-soap-rest-wrapper/
+$ mvn fabric8:deploy
+----
+
+[source, java]
+.*2. 访问 Rest 服务测试*
+----
+$ curl -k http://legacy-soap-rest-wrapper-user4-fuse.apps.0d94.openshift.opentlc.com/jaxrs/ping
+"Success!"
+
+$ curl -k http://legacy-soap-rest-wrapper-user4-fuse.apps.0d94.openshift.opentlc.com/jaxrs/account -X PUT  -d '{"company":{"name":"Rotobots","geo":"NA","active":true},"contact":{"firstName":"Bill","lastName":"Smith","streetAddr":"100 N Park Ave.","city":"Phoenix","state":"AZ","zip":"85017","phone":"602-555-1100"}}' -H 'content-type: application/json'
+{"company":{"active":true,"geo":"NA","name":"Rotobots"},"contact":{"city":"Phoenix","firstName":"Bill","lastName":"Smith","phone":"602-555-1100","state":"AZ","streetAddr":"100 N Park Ave.","zip":"85017"},"id":8,"salesContact":"Steve Perry"}
+----

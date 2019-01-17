@@ -11,19 +11,20 @@
         wsdlURL="http://mock-soap-service-mock.192.168.42.107.nip.io/services/countries.wsdl" xmlns:tns="http://jboss.org/fis/mock-soap-service"/>
     <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
         <restConfiguration component="netty4-http" host="0.0.0.0" port="10000"/>
-        <rest path="/rest">
-            <get uri="/ping">
+        <rest id="rest-0cb38aea-7b44-4e6d-ad45-4db061081021" path="/rest">
+            <get id="get-7bc50b47-35c7-4f09-85d9-9158c6bc0f3a" uri="/ping">
                 <to uri="direct:ping"/>
             </get>
             <post bindingMode="json" consumes="application/json"
+                id="post-39fbf74d-7301-4d66-9b2c-64d1baffef09"
                 type="org.jboss.fis.mock_soap_service.GetCountryRequest" uri="getCountry">
                 <to uri="direct:processrest"/>
             </post>
         </rest>
         <route id="ping-route">
             <from id="_from2" uri="direct:ping"/>
-            <transform>
-               <constant>Success!</constant>
+            <transform id="_transform1">
+                <constant>Success!</constant>
             </transform>
             <log id="log" message=">>> ${body}"/>
         </route>

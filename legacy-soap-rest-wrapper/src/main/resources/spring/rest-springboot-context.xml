@@ -6,9 +6,11 @@
         <dataFormats>
             <xmljson id="xmljson"/>
         </dataFormats>
-        <restConfiguration bindingMode="json" component="jetty"
-            host="localhost" port="9090"/>
+        <restConfiguration bindingMode="json" component="jetty" host="0.0.0.0" port="9090"/>
         <rest id="rest-84fe10aa-e020-4536-a70d-39b83c70f4e4" path="/jaxrs">
+            <get id="rest-get" uri="/ping">
+                <to uri="direct:ping"/>
+            </get>
             <put consumes="application/json"
                 id="put-29c1f850-a6a2-42b2-83a6-f98e5f9387e3"
                 outType="org.fuse.usecase.service.CorporateAccount"
@@ -16,6 +18,13 @@
                 <to uri="direct:updateAccount"/>
             </put>
         </rest>
+        <route id="ping-route">
+            <from id="_from2" uri="direct:ping"/>
+            <transform id="_transform1">
+                <constant>Success!</constant>
+            </transform>
+            <log id="log" message=">>> ${body}"/>
+        </route>
         <route id="updateAccount">
             <from id="_from1" uri="direct:updateAccount"/>
             <log id="_log1" loggingLevel="INFO" message="updateAccount"/>

@@ -228,8 +228,14 @@ $ cd fuse-get-started/enrich-content-rest-and-ws-microservices/amq-enrich-persis
 $ mvn fabric8:deploy -Popenshift
 ----
 
-[source, java]
-.**
-----
+== 测试
 
+[source, java]
+.*使用 AMQ 客户端，发送如下三条消息到 accountQueue*
+----
+{"company":{"name":"Rotobots","geo":"NA","active":true},"contact":{"firstName":"Bill","lastName":"Smith","streetAddr":"100 N Park Ave.","city":"Phoenix","state":"AZ","zip":"85017","phone":"602-555-1100"}}
+
+{"company":{"name":"BikesBikesBikes","geo":"NA","active":true},"contact":{"firstName":"George","lastName":"Jungle","streetAddr":"1101 Smith St.","city":"Raleigh","state":"NC","zip":"27519","phone":"919-555-0800"}}
+
+{"company":{"name":"CloudyCloud","geo":"EU","active":true},"contact":{"firstName":"Fred","lastName":"Quicksand","streetAddr":"202 Barney Blvd.","city":"Rock City","state":"MI","zip":"19728","phone":"313-555-1234"}}
 ----

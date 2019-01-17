@@ -17,7 +17,6 @@
     <bean
         class="com.fasterxml.jackson.jaxrs.json.JacksonJaxbJsonProvider" id="jsonProvider"/>
     <camelContext id="_camelContext1" xmlns="http://camel.apache.org/schema/spring">
-
         <!-- 
         <restConfiguration bindingMode="off" component="servlet"
             contextPath="/rest" host="localhost" port="8181"/>
@@ -31,8 +30,8 @@
         </rest>
          -->
         <route id="_route3">
-<!--             <from id="_from3" uri="direct:usecase"/> -->
-            <from id="_from3" uri="amqp:queue:accountQueue"/> 
+            <!--             <from id="_from3" uri="direct:usecase"/> -->
+            <from id="_from3" uri="amqp:queue:accountQueue"/>
             <convertBodyTo id="_convertBodyTo1" type="String"/>
             <multicast id="_multicast1" parallelProcessing="true" strategyRef="reconcileData">
                 <log id="_log2" loggingLevel="INFO" message="inside multicast"/>
@@ -93,6 +92,5 @@
             <to id="_to9" uri="sql:INSERT INTO USECASE.T_ACCOUNT(CLIENT_ID,SALES_CONTACT,COMPANY_NAME,COMPANY_GEO,COMPANY_ACTIVE,CONTACT_FIRST_NAME,CONTACT_LAST_NAME,CONTACT_ADDRESS,CONTACT_CITY,CONTACT_STATE,CONTACT_ZIP,CONTACT_PHONE,CREATION_DATE,CREATION_USER) VALUES (:#CLIENT_ID,:#SALES_CONTACT,:#COMPANY_NAME,:#COMPANY_GEO,:#COMPANY_ACTIVE,:#CONTACT_FIRST_NAME,:#CONTACT_LAST_NAME,:#CONTACT_ADDRESS,:#CONTACT_CITY,:#CONTACT_STATE,:#CONTACT_ZIP,:#CONTACT_PHONE,:#CREATION_DATE,:#CREATION_USER);"/>
             <log id="_log7" message=">>> Results : ${body}"/>
         </route>
-
     </camelContext>
 </beans>
