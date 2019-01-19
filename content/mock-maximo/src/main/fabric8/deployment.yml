@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Deployment
+metadata:
+  name: ${project.artifactId}-service
+  labels:
+    application: maximo-service
+spec:
+  template:
+    spec:
+      containers:
+        - env:
+            - name: REST_PROTOCOL
+              value: http
+            - name: BACKEND_HOST_URL
+              value: maximo-mock.192.168.42.107.nip.io
+            - name: JAVA_OPTIONS
+              value: "-DREST_PROTOCOL=$(REST_PROTOCOL)
+                      -DBACKEND_HOST_URL=$(BACKEND_HOST_URL)" 
+                                         

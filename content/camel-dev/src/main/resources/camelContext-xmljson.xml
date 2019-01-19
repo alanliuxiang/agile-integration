@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:camel="http://camel.apache.org/schema/spring"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd                          http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+    <camelContext id="testxmljsonContext" trace="false" xmlns="http://camel.apache.org/schema/spring">
+        <dataFormats>
+            <json id="serializer" library="Jackson"/>
+            <xmljson encoding="UTF-8" id="xmljson" rootName="poline"/>
+        </dataFormats>
+        <route id="testxmljsonRoute">
+            <!-- 
+            <unmarshal id="_unmarshal0" ref="xmljson"/>
+            <log id="logger1" message="${body}"/>
+            -->
+            <from id="_from1" uri="file:src/input/json?noop=true"/>
+            <log id="logger1" message="${body}"/>
+            <split id="_split1">
+                <jsonpath>$.poline[*]</jsonpath>
+                <to id="_to1" uri="direct:jsonSplit"/>
+            </split>
+        </route>
+        <route id="testxmljsonProcessingRoute">
+            <from id="nestedJsonProcessing" uri="direct:jsonSplit"/>
+            <log id="logger2" message="${body}"/>
+            <marshal id="mapToJson" ref="serializer"/>
+            <unmarshal id="jsonToXML" ref="xmljson"/>
+            <log id="logger2" message="${body}"/>
+        </route>
+    </camelContext>
+</beans>

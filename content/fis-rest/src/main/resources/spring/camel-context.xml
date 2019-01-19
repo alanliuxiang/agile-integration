@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:camel="http://camel.apache.org/schema/spring"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+    <!-- Define a traditional camel context here -->
+    <bean
+        class="org.apache.camel.component.servlet.CamelHttpTransportServlet" id="camelHttpTransportServlet"/>
+    <bean
+        class="org.springframework.boot.web.servlet.ServletRegistrationBean" id="servlet">
+        <property name="name" value="CamelServlet"/>
+        <property name="servlet" ref="camelHttpTransportServlet"/>
+        <property name="urlMappings" value="/rest/*"/>
+    </bean>
+    <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
+        <restConfiguration apiContextPath="api-docs" bindingMode="auto"
+            component="servlet" contextPath="/quickies">
+            <apiProperty key="cors" value="true"/>
+            <apiProperty key="api.title" value="Self pace tech quickies - one"/>
+            <apiProperty key="api.version" value="1.0.0"/>
+        </restConfiguration>
+        <rest path="/services">
+            <get uri="hi/{name}">
+                <description>Greeting</description>
+                <to uri="direct:greet"/>
+            </get>
+            <get uri="date">
+                <description>GetTime</description>
+                <to uri="direct:getTime"/>
+            </get>
+        </rest>
+        <route id="greetingRoute">
+            <from id="_from1" uri="direct:greet"/>
+            <removeHeaders id="_removeHeaders1" pattern="CamelHttp*"/>
+            <setHeader headerName="CamelHttpMethod" id="_setHeader1">
+                <constant>GET</constant>
+            </setHeader>
+            <log id="greetingLogger" message="Forward the request"/>
+            <toD id="_toD1" uri="http4://mock-rest-service-mock.192.168.42.107.nip.io/quickies/greeting/hi/${headers.name}?bridgeEndpoint=true"/>
+            <convertBodyTo id="_convertBodyTo1" type="String"/>
+            <log id="greetingLogger" message="${body}"/>
+        </route>
+        <route id="dateRoute">
+            <from id="_from2" uri="direct:getTime"/>
+            <removeHeaders id="_removeHeaders2" pattern="CamelHttp*"/>
+            <setHeader headerName="CamelHttpMethod" id="_setHeader2">
+                <constant>GET</constant>
+            </setHeader>
+            <log id="dateLogger" message="Forward the request"/>
+            <toD id="_toD2" uri="http4://mock-rest-service-mock.192.168.42.107.nip.io/quickies/greeting/getTime?bridgeEndpoint=true"/>
+            <convertBodyTo id="_convertBodyTo2" type="String"/>
+            <log id="dateLogger" message="${body}"/>
+        </route>
+    </camelContext>
+</beans>

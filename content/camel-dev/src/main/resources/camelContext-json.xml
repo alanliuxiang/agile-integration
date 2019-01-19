@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:camel="http://camel.apache.org/schema/spring"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd                          http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+    <bean
+        class="org.apache.camel.examples.processor.PropertiesMappingProcessor" id="propsMappingProcessor"/>
+    <bean class="org.apache.camel.examples.processor.DBMappingProcessor" id="dbMappingProcessor"/>
+    <bean class="com.mysql.jdbc.jdbc2.optional.MysqlDataSource" id="dataSource">
+        <property name="serverName" value="localhost"/>
+        <property name="databaseName" value="test"/>
+        <property name="port" value="3306"/>
+        <property name="user" value="test_user"/>
+        <property name="password" value="redhat"/>
+    </bean>
+    <bean class="org.apache.camel.component.sql.SqlComponent" id="sql">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <camelContext id="testJsonContext" trace="false" xmlns="http://camel.apache.org/schema/spring">
+        <propertyPlaceholder id="mxpoProperties" location="file:src/input/properties/mxpoProperties.properties"/>
+        <dataFormats>
+            <json id="mxpoData" library="Jackson" unmarshalTypeName="org.apache.camel.examples.pojo.Mxpo"/>
+            <json id="polineData" library="Jackson" unmarshalTypeName="org.apache.camel.examples.pojo.Poline"/>
+        </dataFormats>
+        <route id="testJsonRoute">
+            <from id="_from1" uri="file:src/input/json?noop=true"/>
+            <log id="logger" message="${body}"/>
+            <split id="_split1">
+                <jsonpath>$.poline[*]</jsonpath>
+                <to id="_to1" uri="direct:externalPropertiesMapping"/>
+            </split>
+            <!--  
+            <unmarshal id="_unmarshal1" ref="mxpoData"/>
+            <log id="logger" message="${body}"/>
+            -->
+        </route>
+        <route id="externalPropertiesMappingRoute">
+            <from id="nestedJsonProcessing" uri="direct:externalPropertiesMapping"/>
+            <camel:setHeader headerName="restype_description" id="_setHeader1">
+                <camel:simple>{{restype_description}}</camel:simple>
+            </camel:setHeader>
+            <camel:setHeader headerName="category_description" id="_setHeader2">
+                <camel:simple>{{category_description}}</camel:simple>
+            </camel:setHeader>
+            <to id="_to2" uri="propsMappingProcessor"/>
+            <log id="_log1" message="${body}"/>
+            <to id="_to3" uri="direct:externalDBMapping"/>
+            <!--  
+            <marshal id="mapToJson" ref="polineData"/>
+            -->
+        </route>
+        <route id="externalDBMappingRoute">
+            <from id="nestedJsonProcessing" uri="direct:externalDBMapping"/>
+            <to id="_to4" uri="sql:SELECT * FROM TAXSMAPPING;"/>
+            <to id="_to5" uri="dbMappingProcessor"/>
+            <marshal id="mapToJson" ref="polineData"/>
+            <log id="_log2" message="${body}"/>
+        </route>
+    </camelContext>
+</beans>

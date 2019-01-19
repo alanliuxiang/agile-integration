@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <groupId>org.jboss.fuse</groupId>
+    <version>1.0-SNAPSHOT</version>
+
+  <modelVersion>4.0.0</modelVersion>
+  <packaging>bundle</packaging>
+  <artifactId>queue-reciever-sender</artifactId>
+
+  <properties>
+    <camel-version>2.17.0.redhat-630187</camel-version>
+    <activemq-version>5.11.0.redhat-630187</activemq-version>
+    <cxf-version>3.1.5.redhat-630187</cxf-version>
+    <jetty-version>7.5.4.v20111024</jetty-version>
+    <slf4j-version>1.6.6</slf4j-version>
+    <spring-version>3.2.8.RELEASE</spring-version>
+    <httpclient4-version>4.3.1</httpclient4-version>
+    <log4j-version>1.2.17</log4j-version>
+    <jackson.version>2.7.3</jackson.version>
+
+    <fabric8.version>1.1.0.CR2</fabric8.version>
+    <!--fabric8 profile properties-->
+    <fabric8.profile>mxpo-rest.consumer</fabric8.profile>
+    <fabric8.parentProfiles>feature-camel</fabric8.parentProfiles>
+    <fabric8.features>mq-fabric-camel</fabric8.features>
+  </properties>
+
+  <dependencies>
+  
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-core</artifactId>
+      <version>${camel-version}</version>
+    </dependency>
+  
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-spring</artifactId>
+      <version>${camel-version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.apache.activemq</groupId>
+      <artifactId>activemq-camel</artifactId>
+      <version>${activemq-version}</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-http</artifactId>
+      <version>${camel-version}</version>
+    </dependency>
+    
+    <!--     
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-xmljson</artifactId>
+      <version>${camel-version}</version>
+    </dependency>
+    <dependency>
+      <groupId>xom</groupId>
+      <artifactId>xom</artifactId>
+      <version>1.2.5</version>
+    </dependency>
+  
+   
+    <dependency>
+      <groupId>org.apache.camel</groupId>
+      <artifactId>camel-jetty</artifactId>
+      <version>${camel-version}</version>
+    </dependency>
+    -->
+  </dependencies>
+
+   <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.3</version>
+        <configuration>
+          <source>1.8</source>
+          <target>1.8</target>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.felix</groupId>
+        <artifactId>maven-bundle-plugin</artifactId>
+        <extensions>true</extensions>
+        <version>3.3.0</version>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.camel</groupId>
+        <artifactId>camel-maven-plugin</artifactId>
+        <version>${camel-version}</version>
+      </plugin>
+      <plugin>
+        <groupId>io.fabric8</groupId>
+        <artifactId>fabric8-maven-plugin</artifactId>
+        <version>${fabric8.version}</version>
+      </plugin>
+    </plugins>
+  </build>
+
+
+</project>

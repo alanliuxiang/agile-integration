@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:camel="http://camel.apache.org/schema/spring"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
+    <!-- Define a traditional camel context here -->
+    <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
+        <!--  
+        <endpoint id="newcomernotice" uri="dozer:newcomernotice?sourceModel=generated_1517054844604.Resident&amp;targetModel=notice.Notice&amp;marshalId=transform-json&amp;unmarshalId=generated_1517054844604&amp;mappingFile=transformation.xml"/>
+        <dataFormats>
+            <jaxb contextPath="generated_1517054844604" id="generated_1517054844604"/>
+            <json id="transform-json" library="Jackson"/>
+        </dataFormats>
+        -->
+        <endpoint id="newcomernotice" uri="dozer:newcomernotice?sourceModel=generated_1517212176492.Resident&amp;targetModel=notice.Notice&amp;marshalId=transform-json&amp;unmarshalId=generated_1517212176492&amp;mappingFile=transformation.xml"/>
+        <dataFormats>
+            <jaxb contextPath="generated_1517212176492" id="generated_1517212176492"/>
+            <json id="transform-json" library="Jackson"/>
+        </dataFormats>
+        <route id="simple-route">
+            <from id="_from1" uri="file:data/input?move=backup/${date:now:yyyyMMddHHmmssSSS}-${file:name}"/>
+            <split id="_split1">
+                <xpath>/residence/resident</xpath>
+                <to id="_to1" uri="ref:newcomernotice"/>
+                <setHeader headerName="CamelFileName" id="_setHeader1">
+                    <simple>${date:now:yyyyMMddHHmmssSSS}-notice.json</simple>
+                </setHeader>
+                <choice id="_choice1">
+                    <when id="_when1">
+                        <jsonpath>$[?(@.vechicle &gt; 0)]</jsonpath>
+                        <to id="_to2" uri="file:data/output/garage"/>
+                    </when>
+                    <otherwise id="_otherwise1">
+                        <to id="_to3" uri="file:data/output/condo"/>
+                    </otherwise>
+                </choice>
+            </split>
+        </route>
+    </camelContext>
+</beans>

@@ -1,0 +1,67 @@
+= AMQ TO REST 集成示例
+:toc: manual
+
+Fuse Online URL: https://console.fuse-ignite.openshift.com
+
+== 准备
+
+=== AMQ Broker
+
+`Connections` → `Create Connection` → `AMQ`
+
+    Broker URL  -  tcp://broker-amq-tcp:61616
+    Username    -  amq
+    Password    -  topSecret
+
+    Connection Name - AMQ Broker 1
+
+=== Damage Reporter
+
+`Customizations` → `Extensions` → `Import Extension`
+
+    $ ls /home/kylin/tmp/damageReporter/
+    damage-reporter-1.2.9.jar
+
+=== TO DO APP
+
+`Customizations` → `API Client Connectors` → `Create API Connector` → `Use a URL`
+
+    https://todo-app-proj229602.6a63.fuse-ignite.openshiftapps.com/swagger.json
+
+`General Connector Info`
+
+    https://todo-app-proj229602.6a63.fuse-ignite.openshiftapps.com/
+
+`Todo App API` → `Browse`
+
+    todo_icon.png
+
+`Connections` → `Create Connection` → `AMQ` → `Todo App API` 
+  
+    Username  - fuse
+    Password  - redhat
+
+    Connection Name - Todo App API 
+
+== AMQ TO REST 集成
+
+`Integrations` → `Create Integration` → `Choose a Start Connection` → `AMQ Broker 1` → `Subscribe for Messages`
+
+    Destination Name - inventoryReceived
+    Destination Type - Queue
+
+`Choose a Finish Connection` → `Todo App API` 
+
+`Create new task` → `Add to Integration` → `Add a Step` → `Damage Reporter`
+
+`Add to Integration` → `Add a Step` → `Data Mapper`
+
+    Sources/task  -  Target/task
+
+`Publish`
+
+    Integration Name - AMQ to REST API Integration
+
+== 测试验证
+
+https://todo-app-proj229602.6a63.fuse-ignite.openshiftapps.com/
