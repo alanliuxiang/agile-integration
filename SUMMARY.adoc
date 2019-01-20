@@ -10,3 +10,6 @@
 ... link:enrich-content-rest-and-ws-microservices/README.adoc[Enrich Content and Aggregate Data]
 ... link:legacy-soap-rest-wrapper/README.adoc[Migrate Legacy SOAP Services]
 . link:3scale/readme.adoc[3Scale]
+.. link:3scale/admin-portal.adoc[管理门户]
+.. link:3scale/manage-api.adoc[API 管理示例]
+.. link:3scale/application-plans.adoc[Application Plans]
