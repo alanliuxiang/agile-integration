@@ -22,9 +22,10 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <maven.compiler.source>1.8</maven.compiler.source>
 
-    <!-- the version of the BOM, defining all the dependency versions -->
+    <!-- the version of the BOM, defining all the dependency versions 
     <fabric8.bom.version>1.2.0.redhat-630262</fabric8.bom.version>
-    <fabric.version>1.2.0.redhat-630262</fabric.version>
+    <fabric.version>1.2.0.redhat-630262</fabric.version>-->
+    <fuse.version>7.2.0.fuse-720020-redhat-00001</fuse.version>
 
     <!-- fabric8 deploy profile configuration -->
     <fabric8.profile>camel-basic-profile</fabric8.profile>
@@ -32,12 +33,25 @@
     <fabric8.features/>
   </properties>
 
+<!--  
     <dependencyManagement>
     <dependencies>
       <dependency>
         <groupId>io.fabric8.bom</groupId>
         <artifactId>fabric8-bom</artifactId>
         <version>${fabric8.bom.version}</version>
+        <type>pom</type>
+        <scope>import</scope>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
+  -->
+  <dependencyManagement>
+    <dependencies>
+      <dependency>
+        <groupId>org.jboss.redhat-fuse</groupId>
+        <artifactId>fuse-springboot-bom</artifactId>
+        <version>${fuse.version}</version>
         <type>pom</type>
         <scope>import</scope>
       </dependency>
@@ -81,13 +95,11 @@
     <dependency>
       <groupId>org.fusesource</groupId>
       <artifactId>camel-sap</artifactId>
-      <version>6.3.0.redhat-262</version>
     </dependency>
     
     <dependency>
       <groupId>mysql</groupId>
       <artifactId>mysql-connector-java</artifactId>
-      <version>5.1.44</version>
     </dependency>
     
     <dependency>

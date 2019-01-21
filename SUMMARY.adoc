@@ -13,3 +13,4 @@
 .. link:3scale/admin-portal.adoc[管理门户]
 .. link:3scale/manage-api.adoc[API 管理示例]
 .. link:3scale/application-plans.adoc[Application Plans]
+.. link:3scale/backend-services.adoc[微服务管理]
