@@ -1,10 +1,6 @@
 = 配置 Application Plans
 :toc: manual
 
-== 目的
-
-本部分在 3Scale 管理门户进行配置 Application Plans。
-
 == 什么是 Application Plans
 
 Application Plans 对 API 消费者定义了不同的 API 管理策略，包括访问权限、登录步骤、可接入的端点及资源、及记费模型等。牛津大学 API 门户 API 是一个很好的示例，如下图：
@@ -12,6 +8,13 @@ Application Plans 对 API 消费者定义了不同的 API 管理策略，包括�
 image:img/oxford-dictionaries-api-portal.png[]
 
 3Scale 定义了灵活的 Application Plans 管理计划，可以配置不同的策略。
+
+== 目的
+
+本部分急需前面的实验，基于 Finto API 进行，在 3Scale 管理门户进行配置 Application Plans， 具体创建两个 Application Plan:
+
+* Basic - 有限制，每小时最多访问 10 次
+* Premium - 没有任何限制
 
 == Application Plans 配置
 

@@ -129,7 +129,7 @@ image:img/3scale-api-integration-methods.png[]
 
 image:img/3scale-new-methods-cooking.png[]
 
-* 点击 `Create Method` 按钮
+ 点击 `Create Method` 按钮
 * 创建完成后 Methods 列表中会有一个 GET /cooking， 出现。
 * Metrics 定义使用默认定义，仅收集 Hits 数据，及只收集 API 访问次数的记录。
 
