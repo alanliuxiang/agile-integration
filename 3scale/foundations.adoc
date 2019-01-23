@@ -1,0 +1,9 @@
+= 基础
+
+本部分在 3Scale 默认安装的基础上，对 http://api.finto.fi/doc[Finto API] 进行管理，具体包括
+
+* API 管理 Methods 和 Metrics 定义
+* 应用计划创建
+* 应用账户的创建
+* 开发者门户的创建
+* API 访问分析

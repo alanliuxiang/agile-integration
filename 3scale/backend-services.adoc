@@ -7,7 +7,7 @@
 
 * 每一个微服务都被独立管理
 * 每一个服务都有一个 basic plan 和一个 premium	plan
-** basic plan 每小时只能访问 10 此，且不能访问某些 CRUD 操作
+** basic plan 每小时只能访问 10 次，且不能访问某些 CRUD 操作
 ** premium  plan 没有任何限制
 * 服务必须以安全加密的方式进行访问
 * Metrics 应该详细设定 
@@ -98,20 +98,19 @@ $ npm run openshift
 
 == cooking 服务管理
 
-=== 创建账户和用户
+=== 创建 API
 
 * 登录 3Scale 管理门户
-* 选择 `Audience` -> `Accounts` -> `Listing`
-* 点击 `Create` 按钮，在弹出的 Create new Account 界面填入如下内容
-** Username - cooking_user
-** Email - cooking_user@example.com
-** Password - redhat
-** Organization/Group Name - cooking_account
+* 选择 `Dashboard` -> `APIS`
+* 点击 `New API` 链接，开始创建一个 API
+* 在新弹出的对话框中输入
+** Name - `Cooking`
+** System name - `cooking_api`
+** Description - `Cooking API`
 
-image:img/3scale-create-account-cooking.png[]
+image:img/3scale-new-api-cooking.png[]
 
-* 点击 `Create` 完成创建
-* 查看创建的开发者账户，关联了一个应用(自动生成)，一个用户，编辑自动生成的应用，并删除
+* 点击 `Add API` 按钮完成创建
 
 === 定义 Methods 及 Metrics
 
@@ -133,7 +132,9 @@ image:img/3scale-new-methods-cooking.png[]
 * 创建完成后 Methods 列表中会有一个 GET /cooking， 出现。
 * Metrics 定义使用默认定义，仅收集 Hits 数据，及只收集 API 访问次数的记录。
 
-=== 创建 Basic Application Plan
+=== 创建 Application Plan
+
+==== 创建 Basic Application Plan
 
 * 登录管理门户，选择 `API` -> `Overview`
 * 在 *Published Application Plans* 部分，点击 `Create Application Plan`
@@ -153,7 +154,7 @@ image:img/3scale-cooking-new-limit.png[]
 * `Max. value` 栏选择 100
 * 点击 `Create usage limit`
 
-=== 创建 Premium Application Plan 
+==== 创建 Premium Application Plan
 
 * 登录管理门户，选择 `API` -> `Overview`
 * 在 *Published Application Plans* 部分，点击 `Create Application Plan`
@@ -164,7 +165,24 @@ image:img/3scale-cooking-new-limit.png[]
 
 image:img/3scale-create-app-plan-cooking-premium.png[]
 
-=== 创建 Cooking Basic Application 关联 Basic Application Plan
+=== 创建账户和用户
+
+* 登录 3Scale 管理门户
+* 选择 `Audience` -> `Accounts` -> `Listing`
+* 点击 `Create` 按钮，在弹出的 Create new Account 界面填入如下内容
+** Username - cooking_user
+** Email - cooking_user@example.com
+** Password - redhat
+** Organization/Group Name - cooking_account
+
+image:img/3scale-create-account-cooking.png[]
+
+* 点击 `Create` 完成创建
+* 查看创建的开发者账户，关联了一个应用(自动生成)，一个用户，编辑自动生成的应用，并删除
+
+=== 创建 Application
+
+==== 创建 Cooking Basic Application 关联 Basic Application Plan
 
 * 选择 `Audience` -> `Accounts` -> `Listing`，点击 `cooking_account`
 * 点击 `0 Application` 链接，点击 `Create Application` 按钮
@@ -178,7 +196,7 @@ image:img/3scale-create-app-cooking-basic.png[]
 * 在 Cooking Basic Application 界面查看，右侧关联的 Application Plan 是 Cooking Basic，API Credentials 部分生成了一个 User Key
 * 在 `State` 部分点击 `Accept` 按钮，确保状态为 Live
 
-=== 创建 Cooking Premium Application 关联 Premium Application Plan
+==== 创建 Cooking Premium Application 关联 Premium Application Plan
 
 * 选择 `Audience` -> `Accounts` -> `Listing`，点击 `cooking_account`
 * 点击 `1 Application` 链接，点击 `Create Application` 按钮
@@ -194,6 +212,8 @@ image:img/3scale-create-app-cooking-premium.png[]
 
 === 在 AMP 中创建 route
 
+NOTE: 本部分内容可选择，如果不创建，则在后续服务集成步骤在 3Scale 界面点击创建。
+
 [source, text]
 ----
 # oc create route edge cooking-apicast-prod --service=apicast-production --hostname=cooking-apicast-prod.apps.example.com -n 3scale-amp
@@ -204,3 +224,43 @@ cooking-apicast-prod      cooking-apicast-prod.apps.example.com                 
 cooking-apicast-staging   cooking-apicast-staging.apps.example.com                   apicast-staging           gateway   edge          None
 ----
 
+=== 服务集成
+
+* 在管理门户中选择 `API` -> `Integration` -> `Configuration`
+* 点击 *Add the base URL of your API and save the configuration* 按钮
+* 在 Integration 界面填入
+** Private Base URL: http://cooking-backend-services.apps.example.com:80
+** Staging Public Base URL: https://cooking-apicast-prod.apps.example.com:443
+** Production Public Base URL: https://cooking-apicast-prod.apps.example.com:443
+* 定义 MAPPING RULES: `/api/cooking` -> `get_cooking`
+
+image:img/3scale-integration-create.png[]
+
+* 在 *Update & test in Staging Environment* 部分填入 API test GET request URL 为 `/api/cooking`
+* 点击 *Update & test in Staging Environment*，正确结果如下图
+
+image:img/3scale-api-integration-test-cooking.png[]
+
+* 点击 *Back to Integration & Configuration* 返回
+* 点击 *Promote v. 1 to Production* 发布
+
+=== 测试访问
+
+选择 `Audience` -> `Application` -> `Listing`, 分别点击 Cooking Basic Application 和 Cooking Premium Application，分别记录对应 User Key。
+
+[source, bash]
+.*1. 以 Cooking Basic Application 对应的 User Key 访问 cooking 服务 105 次，发现 100 次以后访问受限*
+----
+$ for i in {1..105} ; do curl -k "https://cooking-apicast-prod.apps.example.com/api/cooking?user_key=944434733d05d21fcfa95caf6dca2770" ; done
+...
+Limits exceeded
+Limits exceeded
+Limits exceeded
+Limits exceeded
+----
+
+[source, bash]
+.*2. 以 Cooking Premium Application 对应的 User Key 访问 cooking 服务 105 次，发现服务一直可以被访问*
+----
+$ for i in {1..105} ; do curl -k "https://cooking-apicast-prod.apps.example.com/api/cooking?user_key=51fb4712fef863458c8ea355c1b64cbd" ; echo ; done
+----
