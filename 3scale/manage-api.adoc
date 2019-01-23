@@ -77,9 +77,9 @@ image:img/3scale-integration-configration-edit-apicast-promote.png[]
 * 查看 API Key 选择 `API` -> `Applications` -> `Listing` -> `Developer's App` -> `API Credentials`
 
 [source, bash]
-.*访问 Public API 100 此示例*
+.*访问 Public API 10 此示例*
 ----
-$ for i in {1..100} ; do curl -k "https://api-3scale-apicast-production.apps.example.com:443/rest/v1/vocabularies?lang=en&user_key=1e350664e0f197c0472331c0ba2108d5" ; sleep 5s ; done
+$ for i in {1..10} ; do curl -k "https://api-3scale-apicast-production.apps.example.com:443/rest/v1/vocabularies?lang=en&user_key=1e350664e0f197c0472331c0ba2108d5" ;  done
 ----
 
 * 在管理控制台选择 `API` -> `Analytics` -> `Usage` 可查看访问统计数据
