@@ -1,0 +1,156 @@
+{
+  "openapi": "3.0.2",
+  "info": {
+    "title": "Open API 3.0.2",
+    "description": "Locations API",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/locations": {
+      "summary": "Path used to manage the list of locations.",
+      "description": "The REST endpoint/path used to list and create zero or more `location` entities.  This path contains a `GET` and `POST` operation to perform the list and create tasks, respectively.",
+      "get": {
+        "summary": "List All locations",
+        "description": "Gets a list of all `location` entities.",
+        "operationId": "getlocations",
+        "responses": {
+          "200": {
+            "description": "Successful response - returns an array of `location` entities.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/location"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "summary": "Create a location",
+        "description": "Creates a new instance of a `location`.",
+        "operationId": "createlocation",
+        "requestBody": {
+          "description": "A new `location` to be created.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/location"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "description": "Successful response."
+          }
+        }
+      }
+    },
+    "/locations/{locationId}": {
+      "summary": "Path used to manage a single location.",
+      "description": "The REST endpoint/path used to get, update, and delete single instances of an `location`.  This path contains `GET`, `PUT`, and `DELETE` operations used to perform the get, update, and delete tasks, respectively.",
+      "get": {
+        "summary": "Get a location",
+        "description": "Gets the details of a single instance of a `location`.",
+        "operationId": "getlocation",
+        "responses": {
+          "200": {
+            "description": "Successful response - returns a single `location`.",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/location"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "summary": "Update a location",
+        "description": "Updates an existing `location`.",
+        "operationId": "updatelocation",
+        "requestBody": {
+          "description": "Updated `location` information.",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/location"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "202": {
+            "description": "Successful response."
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete a location",
+        "description": "Deletes an existing `location`.",
+        "operationId": "deletelocation",
+        "responses": {
+          "204": {
+            "description": "Successful response."
+          }
+        }
+      },
+      "parameters": [
+        {
+          "name": "locationId",
+          "in": "path",
+          "description": "A unique identifier for a `location`.",
+          "required": true,
+          "schema": {
+            "type": "string"
+          }
+        }
+      ]
+    }
+  },
+  "components": {
+    "schemas": {
+      "location": {
+        "title": "Root Type for location",
+        "description": "The root of the location type's schema.",
+        "type": "object",
+        "properties": {
+          "id": {
+            "format": "int32",
+            "type": "integer"
+          },
+          "name": {
+            "type": "string"
+          },
+          "location": {
+            "type": "object",
+            "properties": {
+              "lat": {
+                "format": "double",
+                "type": "number"
+              },
+              "lng": {
+                "format": "double",
+                "type": "number"
+              }
+            }
+          },
+          "type": {
+            "type": "string"
+          },
+          "status": {
+            "type": "string"
+          }
+        },
+        "example": "{\n    \"id\": 1,\n    \"name\": \"International Inc Corporate Office\",\n    \"location\": {\n        \"lat\": 51.5013673,\n        \"lng\": -0.1440787\n    },\n    \"type\": \"headquarter\",\n    \"status\": \"1\"\n}"
+      }
+    }
+  }
+}

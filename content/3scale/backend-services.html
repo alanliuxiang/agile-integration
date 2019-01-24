@@ -61,6 +61,8 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
+    <link rel="next" href="api/readme.html" />
+    
     
     <link rel="prev" href="appdoc.html" />
     
@@ -318,6 +320,38 @@
             
         </li>
     
+        <li class="chapter " data-level="1.3.3" data-path="api/readme.html">
+            
+                <a href="api/readme.html">
+            
+                    
+                    API LIFECYCLE STAGE
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.3.1" data-path="api/design.html">
+            
+                <a href="api/design.html">
+            
+                    
+                    Design
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
 
             </ul>
             
@@ -372,58 +406,44 @@
 <div id="toc" class="toc">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
-<li><a href="#__">&#x76EE;&#x7684;</a></li>
-<li><a href="#___2">&#x5FAE;&#x670D;&#x52A1;&#x4ECB;&#x7ECD;</a></li>
+<li><a href="#__">&#x5FAE;&#x670D;&#x52A1;&#x4ECB;&#x7ECD;</a>
+<ul class="sectlevel2">
+<li><a href="#_open_api">Open API &#x6587;&#x6863;</a></li>
+</ul>
+</li>
 <li><a href="#_cooking">cooking &#x670D;&#x52A1;&#x7BA1;&#x7406;</a>
 <ul class="sectlevel2">
-<li><a href="#__api">&#x521B;&#x5EFA; API</a></li>
+<li><a href="#___2">&#x76EE;&#x7684;</a></li>
+<li><a href="#_api_gateway_stage_prod">API Gateway &#x4E0A;&#x521B;&#x5EFA; Stage &#x548C; Prod &#x8DEF;&#x5F84;</a></li>
+<li><a href="#__cooking_api">&#x521B;&#x5EFA; Cooking API</a></li>
 <li><a href="#__methods_metrics">&#x5B9A;&#x4E49; Methods &#x53CA; Metrics</a></li>
 <li><a href="#__application_plan">&#x521B;&#x5EFA; Application Plan</a></li>
-<li><a href="#___3">&#x521B;&#x5EFA;&#x8D26;&#x6237;&#x548C;&#x7528;&#x6237;</a></li>
+<li><a href="#___3">&#x521B;&#x5EFA;&#x5F00;&#x53D1;&#x8005;&#x8D26;&#x6237;</a></li>
 <li><a href="#__application">&#x521B;&#x5EFA; Application</a></li>
-<li><a href="#__amp_route">&#x5728; AMP &#x4E2D;&#x521B;&#x5EFA; route</a></li>
-<li><a href="#___4">&#x670D;&#x52A1;&#x96C6;&#x6210;</a></li>
-<li><a href="#___5">&#x6D4B;&#x8BD5;&#x8BBF;&#x95EE;</a></li>
+<li><a href="#___4">&#x5FAE;&#x670D;&#x52A1;&#x96C6;&#x6210;</a></li>
+<li><a href="#___5">&#x5FAE;&#x670D;&#x52A1;&#x8BBF;&#x95EE;&#x6D4B;&#x8BD5;</a></li>
+</ul>
+</li>
+<li><a href="#_fruits">Fruits &#x670D;&#x52A1;&#x7BA1;&#x7406;</a>
+<ul class="sectlevel2">
+<li><a href="#___6">&#x76EE;&#x7684;</a></li>
+<li><a href="#_api_gateway_stage_prod_2">API Gateway &#x4E0A;&#x521B;&#x5EFA; Stage &#x548C; Prod &#x8DEF;&#x5F84;</a></li>
+<li><a href="#__fruits_api">&#x521B;&#x5EFA; Fruits API</a></li>
+<li><a href="#__application_plan_2">&#x521B;&#x5EFA; Application Plan</a></li>
+<li><a href="#___7">&#x521B;&#x5EFA;&#x5F00;&#x53D1;&#x8005;&#x8D26;&#x6237;</a></li>
+<li><a href="#__application_2">&#x521B;&#x5EFA; Application</a></li>
+<li><a href="#___8">&#x5FAE;&#x670D;&#x52A1;&#x96C6;&#x6210;</a></li>
+<li><a href="#___9">&#x5FAE;&#x670D;&#x52A1;&#x8BBF;&#x95EE;&#x6D4B;&#x8BD5;</a></li>
+<li><a href="#__methods">&#x5B9A;&#x4E49; Methods</a></li>
+<li><a href="#__mappings">&#x5B9A;&#x4E49; Mappings &#x89C4;&#x5219;</a></li>
+<li><a href="#__rate_limits">&#x8BBE;&#x5B9A; Rate Limits</a></li>
+<li><a href="#__rate_limits_2">&#x6D4B;&#x8BD5; Rate Limits</a></li>
 </ul>
 </li>
 </ul>
 </div>
 <div class="sect1">
-<h2 id="__">&#x76EE;&#x7684;</h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p>&#x672C;&#x90E8;&#x5206;&#x8BF4;&#x660E;&#x5982;&#x4F55;&#x901A;&#x8FC7; 3Scale &#x7BA1;&#x7406;&#x5FAE;&#x670D;&#x52A1;&#x3002;&#x5177;&#x4F53;&#x8981;&#x6C42;&#x5305;&#x62EC;&#xFF1A;</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#x6BCF;&#x4E00;&#x4E2A;&#x5FAE;&#x670D;&#x52A1;&#x90FD;&#x88AB;&#x72EC;&#x7ACB;&#x7BA1;&#x7406;</p>
-</li>
-<li>
-<p>&#x6BCF;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x90FD;&#x6709;&#x4E00;&#x4E2A; basic plan &#x548C;&#x4E00;&#x4E2A; premium	plan</p>
-<div class="ulist">
-<ul>
-<li>
-<p>basic plan &#x6BCF;&#x5C0F;&#x65F6;&#x53EA;&#x80FD;&#x8BBF;&#x95EE; 10 &#x6B21;&#xFF0C;&#x4E14;&#x4E0D;&#x80FD;&#x8BBF;&#x95EE;&#x67D0;&#x4E9B; CRUD &#x64CD;&#x4F5C;</p>
-</li>
-<li>
-<p>premium  plan &#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x9650;&#x5236;</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>&#x670D;&#x52A1;&#x5FC5;&#x987B;&#x4EE5;&#x5B89;&#x5168;&#x52A0;&#x5BC6;&#x7684;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x8BBF;&#x95EE;</p>
-</li>
-<li>
-<p>Metrics &#x5E94;&#x8BE5;&#x8BE6;&#x7EC6;&#x8BBE;&#x5B9A;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="___2">&#x5FAE;&#x670D;&#x52A1;&#x4ECB;&#x7ECD;</h2>
+<h2 id="__">&#x5FAE;&#x670D;&#x52A1;&#x4ECB;&#x7ECD;</h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>&#x672C;&#x90E8;&#x5206;&#x90E8;&#x7F72; <a href="https://github.com/redhat-china/rhoar-getting-started" class="bare" target="_blank">https://github.com/redhat-china/rhoar-getting-started</a> &#x90E8;&#x5206;&#x63CF;&#x8FF0;&#x7684;&#x5FAE;&#x670D;&#x52A1;&#x5230; OpenShift&#x3002;</p>
@@ -492,7 +512,7 @@
 </ul>
 </div></div></td>
 <td class="tableblock halign-left valign-top"><div><div class="paragraph">
-<p><a href="https://github.com/redhat-china/rhoar-getting-started/blob/master/spring-rest-services/README.adoc" target="_blank">&#x8BE6;&#x7EC6;&#x6587;&#x6863;</a></p>
+<p><a href="https://github.com/redhat-china/rhoar-getting-started/blob/master/springboot/README.adoc" target="_blank">&#x8BE6;&#x7EC6;&#x6587;&#x6863;</a></p>
 </div></div></td>
 </tr>
 <tr>
@@ -527,7 +547,7 @@ $ oc <span class="hljs-keyword">new</span>-project backend-services</code></pre>
 <pre class="highlight"><code class="language-java" data-lang="java">$ cd rhoar-getting-started/vertx/
 $ mvn <span class="hljs-keyword">package</span> fabric8:deploy -Popenshift
 
-$ cd rhoar-getting-started/spring-rest-services/
+$ cd rhoar-getting-started/springboot/
 $ mvn <span class="hljs-keyword">package</span> fabric8:deploy -Popenshift
 
 $ cd rhoar-getting-started/thorntail/
@@ -561,13 +581,91 @@ $ npm run openshift</code></pre>
 {&quot;booking&quot;:&quot;ABC123&quot;}</code></pre>
 </div>
 </div>
+<div class="sect2">
+<h3 id="_open_api">Open API &#x6587;&#x6863;</h3>
+<div class="paragraph">
+<p>Fruits &#x670D;&#x52A1;&#x5B9A;&#x4E49;&#x4E86; Swagger 2.0 &#x6587;&#x6863;</p>
+</div>
+<div class="paragraph">
+<p>Spec &#x94FE;&#x63A5;&#xFF1A; <a href="http://fruits-backend-services.apps.example.com/api/swagger.json" class="bare" target="_blank">http://fruits-backend-services.apps.example.com/api/swagger.json</a></p>
+</div>
+<div class="paragraph">
+<p>&#x5C06;&#x4E0A;&#x9762;&#x94FE;&#x63A5;&#x4E2D;&#x5185;&#x5BB9;&#x5BFC;&#x5165; <a href="http://editor.swagger.io/" target="_blank">http://editor.swagger.io</a>&#xFF0C; &#x53EF;&#x4EE5;&#x770B;&#x5230;&#x5982;&#x4E0B; API &#x7F16;&#x8F91;&#x754C;&#x9762;</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/backend-services-docs-editor.png" alt="backend services docs editor.png"></span></p>
+</div>
+<div class="paragraph">
+<p>&#x6D4B;&#x8BD5; API &#x53EF;&#x4EE5;&#x8BBF;&#x95EE; <a href="http://fruits-backend-services.apps.example.com/swagger-ui.html" class="bare" target="_blank">http://fruits-backend-services.apps.example.com/swagger-ui.html</a></p>
+</div>
+<div class="paragraph">
+<p>&#x5728;&#x5982;&#x4E0A;&#x754C;&#x9762;&#x4E0A;&#x4F9D;&#x6B21;&#x6D4B;&#x8BD5; <code>GET</code>&#x3001;<code>POST</code>&#x3001;<code>PUT</code>&#x3001;<code>DELETE</code> &#x7B49;&#x65B9;&#x6CD5;&#x3002;</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/backend-services-ui-test.png" alt="backend services ui test.png"></span></p>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
 <h2 id="_cooking">cooking &#x670D;&#x52A1;&#x7BA1;&#x7406;</h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="__api">&#x521B;&#x5EFA; API</h3>
+<h3 id="___2">&#x76EE;&#x7684;</h3>
+<div class="paragraph">
+<p>&#x672C;&#x90E8;&#x5206;&#x8BF4;&#x660E;&#x5982;&#x4F55;&#x901A;&#x8FC7; 3Scale &#x7BA1;&#x7406;&#x5FAE;&#x670D;&#x52A1;&#x3002;&#x5177;&#x4F53;&#x8981;&#x6C42;&#x5305;&#x62EC;&#xFF1A;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>&#x6BCF;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x90FD;&#x6709;&#x4E00;&#x4E2A; basic plan &#x548C;&#x4E00;&#x4E2A; premium  plan</p>
+<div class="ulist">
+<ul>
+<li>
+<p>basic plan &#x6BCF;&#x5C0F;&#x65F6;&#x53EA;&#x80FD;&#x8BBF;&#x95EE; 10 &#x6B21;&#xFF0C;&#x4E14;&#x4E0D;&#x80FD;&#x8BBF;&#x95EE;&#x67D0;&#x4E9B; CRUD &#x64CD;&#x4F5C;</p>
+</li>
+<li>
+<p>premium  plan &#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x9650;&#x5236;</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>&#x670D;&#x52A1;&#x5FC5;&#x987B;&#x4EE5;&#x5B89;&#x5168;&#x52A0;&#x5BC6;&#x7684;&#x65B9;&#x5F0F;&#x8FDB;&#x884C;&#x8BBF;&#x95EE;</p>
+</li>
+<li>
+<p>Metrics &#x5E94;&#x8BE5;&#x8BE6;&#x7EC6;&#x8BBE;&#x5B9A;</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_api_gateway_stage_prod">API Gateway &#x4E0A;&#x521B;&#x5EFA; Stage &#x548C; Prod &#x8DEF;&#x5F84;</h3>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+&#x672C;&#x90E8;&#x5206;&#x5185;&#x5BB9;&#x53EF;&#x9009;&#x62E9;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x521B;&#x5EFA;&#xFF0C;&#x5219;&#x5728;&#x540E;&#x7EED;&#x670D;&#x52A1;&#x96C6;&#x6210;&#x6B65;&#x9AA4;&#x5728; 3Scale &#x754C;&#x9762;&#x70B9;&#x51FB;&#x521B;&#x5EFA;&#x3002;
+</td>
+</tr>
+</table>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-text" data-lang="text"># oc create route edge cooking-apicast-prod --service=apicast-production --hostname=cooking-apicast-prod.apps.example.com -n 3scale-amp
+# oc create route edge cooking-apicast-staging --service=apicast-staging --hostname=cooking-apicast-staging.apps.example.com -n 3scale-amp
+
+# oc get route -n 3scale-amp | grep cooking
+cooking-apicast-prod      cooking-apicast-prod.apps.example.com                      apicast-production        gateway   edge          None
+cooking-apicast-staging   cooking-apicast-staging.apps.example.com                   apicast-staging           gateway   edge          None</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="__cooking_api">&#x521B;&#x5EFA; Cooking API</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -611,7 +709,7 @@ $ npm run openshift</code></pre>
 <div class="sect2">
 <h3 id="__methods_metrics">&#x5B9A;&#x4E49; Methods &#x53CA; Metrics</h3>
 <div class="paragraph">
-<p>&#x5728;&#x7BA1;&#x7406;&#x95E8;&#x6237;&#x4E2D;&#x9009;&#x62E9; <code>API</code> &#x2192; <code>Integration</code> &#x2192; <code>Methods &amp; Metrics</code>&#xFF0C;</p>
+<p>&#x5728;&#x7BA1;&#x7406;&#x95E8;&#x6237;&#x4E2D;&#x9009;&#x62E9; <code>API:Cooking</code> &#x2192; <code>Integration</code> &#x2192; <code>Methods &amp; Metrics</code>&#xFF0C;</p>
 </div>
 <div class="paragraph">
 <p><span class="image"><img src="img/3scale-api-integration-methods.png" alt="3scale api integration methods.png"></span></p>
@@ -660,7 +758,7 @@ $ npm run openshift</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>&#x767B;&#x5F55;&#x7BA1;&#x7406;&#x95E8;&#x6237;&#xFF0C;&#x9009;&#x62E9; <code>API</code> &#x2192; <code>Overview</code></p>
+<p>&#x767B;&#x5F55;&#x7BA1;&#x7406;&#x95E8;&#x6237;&#xFF0C;&#x9009;&#x62E9; <code>API:Cooking</code> &#x2192; <code>Overview</code></p>
 </li>
 <li>
 <p>&#x5728; <strong>Published Application Plans</strong> &#x90E8;&#x5206;&#xFF0C;&#x70B9;&#x51FB; <code>Create Application Plan</code></p>
@@ -714,7 +812,7 @@ $ npm run openshift</code></pre>
 <div class="ulist">
 <ul>
 <li>
-<p>&#x767B;&#x5F55;&#x7BA1;&#x7406;&#x95E8;&#x6237;&#xFF0C;&#x9009;&#x62E9; <code>API</code> &#x2192; <code>Overview</code></p>
+<p>&#x767B;&#x5F55;&#x7BA1;&#x7406;&#x95E8;&#x6237;&#xFF0C;&#x9009;&#x62E9; <code>API:Cooking</code> &#x2192; <code>Overview</code></p>
 </li>
 <li>
 <p>&#x5728; <strong>Published Application Plans</strong> &#x90E8;&#x5206;&#xFF0C;&#x70B9;&#x51FB; <code>Create Application Plan</code></p>
@@ -739,7 +837,7 @@ $ npm run openshift</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="___3">&#x521B;&#x5EFA;&#x8D26;&#x6237;&#x548C;&#x7528;&#x6237;</h3>
+<h3 id="___3">&#x521B;&#x5EFA;&#x5F00;&#x53D1;&#x8005;&#x8D26;&#x6237;</h3>
 <div class="ulist">
 <ul>
 <li>
@@ -863,36 +961,11 @@ $ npm run openshift</code></pre>
 </div>
 </div>
 <div class="sect2">
-<h3 id="__amp_route">&#x5728; AMP &#x4E2D;&#x521B;&#x5EFA; route</h3>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<div class="title">Note</div>
-</td>
-<td class="content">
-&#x672C;&#x90E8;&#x5206;&#x5185;&#x5BB9;&#x53EF;&#x9009;&#x62E9;&#xFF0C;&#x5982;&#x679C;&#x4E0D;&#x521B;&#x5EFA;&#xFF0C;&#x5219;&#x5728;&#x540E;&#x7EED;&#x670D;&#x52A1;&#x96C6;&#x6210;&#x6B65;&#x9AA4;&#x5728; 3Scale &#x754C;&#x9762;&#x70B9;&#x51FB;&#x521B;&#x5EFA;&#x3002;
-</td>
-</tr>
-</table>
-</div>
-<div class="listingblock">
-<div class="content">
-<pre class="highlight"><code class="language-text" data-lang="text"># oc create route edge cooking-apicast-prod --service=apicast-production --hostname=cooking-apicast-prod.apps.example.com -n 3scale-amp
-# oc create route edge cooking-apicast-staging --service=apicast-staging --hostname=cooking-apicast-staging.apps.example.com -n 3scale-amp
-
-# oc get route -n 3scale-amp | grep cooking
-cooking-apicast-prod      cooking-apicast-prod.apps.example.com                      apicast-production        gateway   edge          None
-cooking-apicast-staging   cooking-apicast-staging.apps.example.com                   apicast-staging           gateway   edge          None</code></pre>
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="___4">&#x670D;&#x52A1;&#x96C6;&#x6210;</h3>
+<h3 id="___4">&#x5FAE;&#x670D;&#x52A1;&#x96C6;&#x6210;</h3>
 <div class="ulist">
 <ul>
 <li>
-<p>&#x5728;&#x7BA1;&#x7406;&#x95E8;&#x6237;&#x4E2D;&#x9009;&#x62E9; <code>API</code> &#x2192; <code>Integration</code> &#x2192; <code>Configuration</code></p>
+<p>&#x5728;&#x7BA1;&#x7406;&#x95E8;&#x6237;&#x4E2D;&#x9009;&#x62E9; <code>API:Cooking</code> &#x2192; <code>Integration</code> &#x2192; <code>Configuration</code></p>
 </li>
 <li>
 <p>&#x70B9;&#x51FB; <strong>Add the base URL of your API and save the configuration</strong> &#x6309;&#x94AE;</p>
@@ -905,7 +978,7 @@ cooking-apicast-staging   cooking-apicast-staging.apps.example.com              
 <p>Private Base URL: <a href="http://cooking-backend-services.apps.example.com:80" class="bare" target="_blank">http://cooking-backend-services.apps.example.com:80</a></p>
 </li>
 <li>
-<p>Staging Public Base URL: <a href="https://cooking-apicast-prod.apps.example.com:443" class="bare" target="_blank">https://cooking-apicast-prod.apps.example.com:443</a></p>
+<p>Staging Public Base URL: <a href="https://cooking-apicast-staging.apps.example.com:443" class="bare" target="_blank">https://cooking-apicast-staging.apps.example.com:443</a></p>
 </li>
 <li>
 <p>Production Public Base URL: <a href="https://cooking-apicast-prod.apps.example.com:443" class="bare" target="_blank">https://cooking-apicast-prod.apps.example.com:443</a></p>
@@ -946,7 +1019,7 @@ cooking-apicast-staging   cooking-apicast-staging.apps.example.com              
 </div>
 </div>
 <div class="sect2">
-<h3 id="___5">&#x6D4B;&#x8BD5;&#x8BBF;&#x95EE;</h3>
+<h3 id="___5">&#x5FAE;&#x670D;&#x52A1;&#x8BBF;&#x95EE;&#x6D4B;&#x8BD5;</h3>
 <div class="paragraph">
 <p>&#x9009;&#x62E9; <code>Audience</code> &#x2192; <code>Application</code> &#x2192; <code>Listing</code>, &#x5206;&#x522B;&#x70B9;&#x51FB; Cooking Basic Application &#x548C; Cooking Premium Application&#xFF0C;&#x5206;&#x522B;&#x8BB0;&#x5F55;&#x5BF9;&#x5E94; User Key&#x3002;</p>
 </div>
@@ -965,6 +1038,812 @@ Limits exceeded</code></pre>
 <div class="title"><strong>2. &#x4EE5; Cooking Premium Application &#x5BF9;&#x5E94;&#x7684; User Key &#x8BBF;&#x95EE; cooking &#x670D;&#x52A1; 105 &#x6B21;&#xFF0C;&#x53D1;&#x73B0;&#x670D;&#x52A1;&#x4E00;&#x76F4;&#x53EF;&#x4EE5;&#x88AB;&#x8BBF;&#x95EE;</strong></div>
 <div class="content">
 <pre class="highlight"><code class="language-bash" data-lang="bash">$ <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> {1..105} ; <span class="hljs-keyword">do</span> curl -k <span class="hljs-string">&quot;https://cooking-apicast-prod.apps.example.com/api/cooking?user_key=51fb4712fef863458c8ea355c1b64cbd&quot;</span> ; <span class="hljs-built_in">echo</span> ; <span class="hljs-keyword">done</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_fruits">Fruits &#x670D;&#x52A1;&#x7BA1;&#x7406;</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="___6">&#x76EE;&#x7684;</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>&#x5C06; Fruits &#x670D;&#x52A1;&#x8FDB;&#x884C;&#x7BA1;&#x7406;</p>
+</li>
+<li>
+<p>&#x5B9A;&#x4E49; basic &#x548C; premium &#x5E94;&#x7528;&#x8BA1;&#x5212;</p>
+</li>
+<li>
+<p>&#x5B9A;&#x4E49;&#x65B9;&#x6CD5;&#x548C;&#x6620;&#x5C04;</p>
+</li>
+<li>
+<p>&#x5C06;&#x9650;&#x6D41;&#x7B56;&#x7387;&#x6DFB;&#x52A0;&#x5230; basic &#x8BA1;&#x5212;&#xFF0C;&#x63A7;&#x5236; API &#x7684;&#x8BBF;&#x95EE;</p>
+</li>
+<li>
+<p>&#x5F00;&#x53D1;&#x8005;&#x95E8;&#x6237;&#x521B;&#x5EFA;</p>
+</li>
+<li>
+<p>API &#x6587;&#x6863;&#x5BFC;&#x5165;</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_api_gateway_stage_prod_2">API Gateway &#x4E0A;&#x521B;&#x5EFA; Stage &#x548C; Prod &#x8DEF;&#x5F84;</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-text" data-lang="text"># oc create route edge fruits-apicast-prod --service=apicast-production --hostname=fruits-apicast-prod.apps.example.com -n 3scale-amp
+# oc create route edge fruits-apicast-staging --service=apicast-staging --hostname=fruits-apicast-staging.apps.example.com -n 3scale-amp</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+&#x5982;&#x679C;&#x4E0D;&#x521B;&#x5EFA; Stage &#x548C; Prod &#x8DEF;&#x5F84;&#xFF0C;&#x5219;&#x5728;&#x540E;&#x7EED;&#x670D;&#x52A1;&#x96C6;&#x6210;&#x6B65;&#x9AA4;&#x5728; 3Scale &#x754C;&#x9762;&#x70B9;&#x51FB;&#x521B;&#x5EFA;&#x3002;
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="__fruits_api">&#x521B;&#x5EFA; Fruits API</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>&#x767B;&#x5F55; 3Scale &#x7BA1;&#x7406;&#x95E8;&#x6237;</p>
+</li>
+<li>
+<p>&#x9009;&#x62E9; <code>Dashboard</code> &#x2192; <code>APIS</code></p>
+</li>
+<li>
+<p>&#x70B9;&#x51FB; <code>New API</code> &#x94FE;&#x63A5;&#xFF0C;&#x5F00;&#x59CB;&#x521B;&#x5EFA;&#x4E00;&#x4E2A; API</p>
+</li>
+<li>
+<p>&#x5728;&#x65B0;&#x5F39;&#x51FA;&#x7684;&#x5BF9;&#x8BDD;&#x6846;&#x4E2D;&#x8F93;&#x5165;</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Name - <code>Fruits</code></p>
+</li>
+<li>
+<p>System name - <code>fruits_api</code></p>
+</li>
+<li>
+<p>Description - <code>Fruits API</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/3scale-new-api-fruits.png" alt="3scale new api fruits.png"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>&#x70B9;&#x51FB; <code>Add API</code> &#x6309;&#x94AE;&#x5B8C;&#x6210;&#x521B;&#x5EFA;</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="__application_plan_2">&#x521B;&#x5EFA; Application Plan</h3>
+<div class="sect3">
+<h4 id="__basic_application_plan_2">&#x521B;&#x5EFA; Basic Application Plan</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>&#x767B;&#x5F55;&#x7BA1;&#x7406;&#x95E8;&#x6237;&#xFF0C;&#x9009;&#x62E9; <code>API:Fruits</code> &#x2192; <code>Overview</code></p>
+</li>
+<li>
+<p>&#x5728; <strong>Published Application Plans</strong> &#x90E8;&#x5206;&#xFF0C;&#x70B9;&#x51FB; <code>Create Application Plan</code></p>
+</li>
+<li>
+<p><code>Name</code> &#x680F;&#x8F93;&#x5165; Basic</p>
+</li>
+<li>
+<p><code>System name</code> &#x680F;&#x8F93;&#x5165; fruits_basic</p>
+</li>
+<li>
+<p><code>Applications require approval?</code> &#x9009;&#x62E9; Y</p>
+</li>
+<li>
+<p>&#x70B9;&#x51FB; <code>Create Application Plan</code> &#x6309;&#x94AE;&#x521B;&#x5EFA; Plan</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/3scale-create-app-plan-fruits-basic.png" alt="3scale create app plan fruits basic.png"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>&#x5728; Application Plans &#x5217;&#x8868;&#x4E2D;&#x70B9;&#x51FB; <code>Publish</code> &#x53D1;&#x5E03; Basic Plan</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="__premium_application_plan_2">&#x521B;&#x5EFA; Premium Application Plan</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>&#x767B;&#x5F55;&#x7BA1;&#x7406;&#x95E8;&#x6237;&#xFF0C;&#x9009;&#x62E9; <code>API:Fruits</code> &#x2192; <code>Overview</code></p>
+</li>
+<li>
+<p>&#x5728; <strong>Published Application Plans</strong> &#x90E8;&#x5206;&#xFF0C;&#x70B9;&#x51FB; <code>Create Application Plan</code></p>
+</li>
+<li>
+<p><code>Name</code> &#x680F;&#x8F93;&#x5165; Premium</p>
+</li>
+<li>
+<p><code>System name</code> &#x680F;&#x8F93;&#x5165; fruits_premium</p>
+</li>
+<li>
+<p><code>Applications require approval?</code> &#x9009;&#x62E9; Y</p>
+</li>
+<li>
+<p>&#x70B9;&#x51FB; <code>Create Application Plan</code> &#x6309;&#x94AE;&#x521B;&#x5EFA; Plan</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/3scale-create-app-plan-fruits-premium.png" alt="3scale create app plan fruits premium.png"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>&#x5728; Application Plans &#x5217;&#x8868;&#x4E2D;&#x70B9;&#x51FB; <code>Publish</code> &#x53D1;&#x5E03; Premium Plan</p>
+</li>
+<li>
+<p>&#x5728; Default Plan &#x4E0B;&#x62C9;&#x83DC;&#x5355;&#x4E2D;&#x9009;&#x62E9;&#x9ED8;&#x8BA4; Plan &#x4E3A; Basic</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="___7">&#x521B;&#x5EFA;&#x5F00;&#x53D1;&#x8005;&#x8D26;&#x6237;</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>&#x767B;&#x5F55; 3Scale &#x7BA1;&#x7406;&#x95E8;&#x6237;</p>
+</li>
+<li>
+<p>&#x9009;&#x62E9; <code>Audience</code> &#x2192; <code>Accounts</code> &#x2192; <code>Listing</code></p>
+</li>
+<li>
+<p>&#x70B9;&#x51FB; <code>Create</code> &#x6309;&#x94AE;&#xFF0C;&#x5728;&#x5F39;&#x51FA;&#x7684; Create new Account &#x754C;&#x9762;&#x586B;&#x5165;&#x5982;&#x4E0B;&#x5185;&#x5BB9;</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Username - fruits_user</p>
+</li>
+<li>
+<p>Email - <a href="mailto:fruits_user@example.com" target="_blank">fruits_user@example.com</a></p>
+</li>
+<li>
+<p>Password - redhat</p>
+</li>
+<li>
+<p>Organization/Group Name - RH/Fruits</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/3scale-create-account-fruits.png" alt="3scale create account fruits.png"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>&#x70B9;&#x51FB; <code>Create</code> &#x5B8C;&#x6210;&#x521B;&#x5EFA;</p>
+</li>
+<li>
+<p>&#x67E5;&#x770B;&#x521B;&#x5EFA;&#x7684;&#x5F00;&#x53D1;&#x8005;&#x8D26;&#x6237;&#xFF0C;&#x5173;&#x8054;&#x4E86;&#x4E00;&#x4E9B;&#x5E94;&#x7528;(&#x81EA;&#x52A8;&#x751F;&#x6210;)&#xFF0C;&#x4E00;&#x4E2A;&#x7528;&#x6237;&#xFF0C;&#x7F16;&#x8F91;&#x81EA;&#x52A8;&#x751F;&#x6210;&#x7684;&#x5E94;&#x7528;&#xFF0C;&#x5E76;&#x5220;&#x9664;</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="__application_2">&#x521B;&#x5EFA; Application</h3>
+<div class="sect3">
+<h4 id="__basic_application_basic_application_plan">&#x521B;&#x5EFA; Basic Application &#x5173;&#x8054; Basic Application Plan</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>&#x9009;&#x62E9; <code>Audience</code> &#x2192; <code>Accounts</code> &#x2192; <code>Listing</code>&#xFF0C;&#x70B9;&#x51FB; <code>RH/Fruits</code></p>
+</li>
+<li>
+<p>&#x70B9;&#x51FB; <code>0 Application</code> &#x94FE;&#x63A5;&#xFF0C;&#x70B9;&#x51FB; <code>Create Application</code> &#x6309;&#x94AE;</p>
+</li>
+<li>
+<p>&#x5728; Application plan &#x4E0B;&#x62C9;&#x5355;&#x4E2D;&#x9009;&#x62E9; <code>Basic</code></p>
+</li>
+<li>
+<p>&#x5728; Name &#x680F;&#x8F93;&#x5165; <code>Fruits Basic Application</code></p>
+</li>
+<li>
+<p>&#x5728; Description &#x680F;&#x8F93;&#x5165;&#x63CF;&#x8FF0;&#x5185;&#x5BB9;</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/3scale-create-app-fruits-basic.png" alt="3scale create app fruits basic.png"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>&#x70B9;&#x51FB; <code>Create Application</code> &#x521B;&#x5EFA;&#x5E94;&#x7528;</p>
+</li>
+<li>
+<p>&#x5728; Fruits Basic Application &#x754C;&#x9762;&#x67E5;&#x770B;&#xFF0C;&#x53F3;&#x4FA7;&#x5173;&#x8054;&#x7684; Application Plan &#x662F; Basic&#xFF0C;API Credentials &#x90E8;&#x5206;&#x751F;&#x6210;&#x4E86;&#x4E00;&#x4E2A; User Key</p>
+</li>
+<li>
+<p>&#x5728; <code>State</code> &#x90E8;&#x5206;&#x70B9;&#x51FB; <code>Accept</code> &#x6309;&#x94AE;&#xFF0C;&#x786E;&#x4FDD;&#x72B6;&#x6001;&#x4E3A; Live</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="__premium_application_premium_application_plan">&#x521B;&#x5EFA; Premium Application &#x5173;&#x8054; Premium Application Plan</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>&#x9009;&#x62E9; <code>Audience</code> &#x2192; <code>Accounts</code> &#x2192; <code>Listing</code>&#xFF0C;&#x70B9;&#x51FB; <code>RH/Fruits</code></p>
+</li>
+<li>
+<p>&#x70B9;&#x51FB; <code>1 Application</code> &#x94FE;&#x63A5;&#xFF0C;&#x70B9;&#x51FB; <code>Create Application</code> &#x6309;&#x94AE;</p>
+</li>
+<li>
+<p>&#x5728; Application plan &#x4E0B;&#x62C9;&#x5355;&#x4E2D;&#x9009;&#x62E9; <code>Premium</code></p>
+</li>
+<li>
+<p>&#x5728; Name &#x680F;&#x8F93;&#x5165; <code>Fruits Premium Application</code></p>
+</li>
+<li>
+<p>&#x5728; Description &#x680F;&#x8F93;&#x5165;&#x63CF;&#x8FF0;&#x5185;&#x5BB9;</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/3scale-create-app-fruits-premium.png" alt="3scale create app fruits premium.png"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>&#x70B9;&#x51FB; <code>Create Application</code> &#x521B;&#x5EFA;&#x5E94;&#x7528;</p>
+</li>
+<li>
+<p>&#x5728; Fruits Premium Application &#x754C;&#x9762;&#x67E5;&#x770B;&#xFF0C;&#x53F3;&#x4FA7;&#x5173;&#x8054;&#x7684; Application Plan &#x662F; Premium&#xFF0C;API Credentials &#x90E8;&#x5206;&#x751F;&#x6210;&#x4E86;&#x4E00;&#x4E2A; User Key</p>
+</li>
+<li>
+<p>&#x5728; <code>State</code> &#x90E8;&#x5206;&#x70B9;&#x51FB; <code>Accept</code> &#x6309;&#x94AE;&#xFF0C;&#x786E;&#x4FDD;&#x72B6;&#x6001;&#x4E3A; Live</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="___8">&#x5FAE;&#x670D;&#x52A1;&#x96C6;&#x6210;</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>&#x5728;&#x7BA1;&#x7406;&#x95E8;&#x6237;&#x4E2D;&#x9009;&#x62E9; <code>API:Fruits</code> &#x2192; <code>Integration</code> &#x2192; <code>Configuration</code></p>
+</li>
+<li>
+<p>&#x70B9;&#x51FB; <strong>Add the base URL of your API and save the configuration</strong> &#x6309;&#x94AE;</p>
+</li>
+<li>
+<p>&#x5728; Integration &#x754C;&#x9762;&#x586B;&#x5165;</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Private Base URL: <a href="http://fruits-backend-services.apps.example.com:80" class="bare" target="_blank">http://fruits-backend-services.apps.example.com:80</a></p>
+</li>
+<li>
+<p>Staging Public Base URL: <a href="https://fruits-apicast-staging.apps.example.com:443" class="bare" target="_blank">https://fruits-apicast-staging.apps.example.com:443</a></p>
+</li>
+<li>
+<p>Production Public Base URL: <a href="https://fruits-apicast-prod.apps.example.com:443" class="bare" target="_blank">https://fruits-apicast-prod.apps.example.com:443</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>&#x5B9A;&#x4E49; MAPPING RULES: <code>/api/cooking</code> &#x2192; <code>get_cooking</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/3scale-integration-create-fruits.png" alt="3scale integration create fruits.png"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>&#x4FDD;&#x6301;&#x5176;&#x5B83;&#x914D;&#x7F6E;&#x9879;&#x76EE;&#x4E0D;&#x53D8;</p>
+</li>
+<li>
+<p>&#x5728; <strong>Update &amp; test in Staging Environment</strong> &#x90E8;&#x5206;&#x586B;&#x5165; API test GET request URL &#x4E3A; <code>/api/fruits</code></p>
+</li>
+<li>
+<p>&#x70B9;&#x51FB; <strong>Update &amp; test in Staging Environment</strong>&#xFF0C;&#x6B63;&#x786E;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#x56FE;</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/3scale-api-integration-test-fruits.png" alt="3scale api integration test fruits.png"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>&#x70B9;&#x51FB; <strong>Back to Integration &amp; Configuration</strong> &#x8FD4;&#x56DE;</p>
+</li>
+<li>
+<p>&#x70B9;&#x51FB; <strong>Promote v. 1 to Production</strong> &#x53D1;&#x5E03;</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="___9">&#x5FAE;&#x670D;&#x52A1;&#x8BBF;&#x95EE;&#x6D4B;&#x8BD5;</h3>
+<div class="paragraph">
+<p>&#x9009;&#x62E9; <code>Audience</code> &#x2192; <code>Application</code> &#x2192; <code>Listing</code>, &#x5206;&#x522B;&#x70B9;&#x51FB; Fruits Basic Application &#x548C; Fruits Premium Application&#xFF0C;&#x5206;&#x522B;&#x8BB0;&#x5F55;&#x5BF9;&#x5E94; User Key&#x3002;</p>
+</div>
+<div class="listingblock">
+<div class="title"><strong>1. &#x4EE5; Fruits Basic Application &#x5BF9;&#x5E94;&#x7684; User Key &#x8BBF;&#x95EE; Fruits &#x670D;&#x52A1; 15 &#x6B21;&#xFF0C;&#x53D1;&#x73B0;&#x670D;&#x52A1;&#x4E00;&#x76F4;&#x53EF;&#x4EE5;&#x88AB;&#x8BBF;&#x95EE;</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> {1..15} ; <span class="hljs-keyword">do</span> curl -k <span class="hljs-string">&quot;https://fruits-apicast-prod.apps.example.com/api/fruits?user_key=3b823b8877d11023bdf8cb5477251883&quot;</span> ; <span class="hljs-built_in">echo</span> ; <span class="hljs-keyword">done</span>
+[{<span class="hljs-string">&quot;id&quot;</span>:1,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Cherry&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:2,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Apple&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:3,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Banana&quot;</span>}]
+[{<span class="hljs-string">&quot;id&quot;</span>:1,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Cherry&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:2,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Apple&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:3,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Banana&quot;</span>}]
+[{<span class="hljs-string">&quot;id&quot;</span>:1,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Cherry&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:2,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Apple&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:3,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Banana&quot;</span>}]
+[{<span class="hljs-string">&quot;id&quot;</span>:1,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Cherry&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:2,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Apple&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:3,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Banana&quot;</span>}]
+[{<span class="hljs-string">&quot;id&quot;</span>:1,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Cherry&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:2,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Apple&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:3,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Banana&quot;</span>}]
+[{<span class="hljs-string">&quot;id&quot;</span>:1,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Cherry&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:2,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Apple&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:3,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Banana&quot;</span>}]
+[{<span class="hljs-string">&quot;id&quot;</span>:1,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Cherry&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:2,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Apple&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:3,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Banana&quot;</span>}]
+[{<span class="hljs-string">&quot;id&quot;</span>:1,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Cherry&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:2,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Apple&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:3,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Banana&quot;</span>}]
+[{<span class="hljs-string">&quot;id&quot;</span>:1,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Cherry&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:2,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Apple&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:3,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Banana&quot;</span>}]
+[{<span class="hljs-string">&quot;id&quot;</span>:1,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Cherry&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:2,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Apple&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:3,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Banana&quot;</span>}]
+[{<span class="hljs-string">&quot;id&quot;</span>:1,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Cherry&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:2,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Apple&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:3,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Banana&quot;</span>}]
+[{<span class="hljs-string">&quot;id&quot;</span>:1,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Cherry&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:2,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Apple&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:3,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Banana&quot;</span>}]
+[{<span class="hljs-string">&quot;id&quot;</span>:1,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Cherry&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:2,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Apple&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:3,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Banana&quot;</span>}]
+[{<span class="hljs-string">&quot;id&quot;</span>:1,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Cherry&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:2,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Apple&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:3,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Banana&quot;</span>}]
+[{<span class="hljs-string">&quot;id&quot;</span>:1,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Cherry&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:2,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Apple&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:3,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Banana&quot;</span>}]</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title"><strong>2. &#x4EE5; Fruits Premium Application &#x5BF9;&#x5E94;&#x7684; User Key &#x8BBF;&#x95EE; Fruits &#x670D;&#x52A1; 15 &#x6B21;&#xFF0C;&#x53D1;&#x73B0;&#x670D;&#x52A1;&#x4E00;&#x76F4;&#x53EF;&#x4EE5;&#x88AB;&#x8BBF;&#x95EE;</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-bash" data-lang="bash">$ <span class="hljs-keyword">for</span> i <span class="hljs-keyword">in</span> {1..15} ; <span class="hljs-keyword">do</span> curl -k <span class="hljs-string">&quot;https://fruits-apicast-prod.apps.example.com/api/fruits?user_key=e2403e7bc537bfd24aee7e3cfa8b0991&quot;</span> ; <span class="hljs-built_in">echo</span> ; <span class="hljs-keyword">done</span>
+[{<span class="hljs-string">&quot;id&quot;</span>:1,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Cherry&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:2,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Apple&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:3,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Banana&quot;</span>}]
+[{<span class="hljs-string">&quot;id&quot;</span>:1,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Cherry&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:2,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Apple&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:3,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Banana&quot;</span>}]
+[{<span class="hljs-string">&quot;id&quot;</span>:1,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Cherry&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:2,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Apple&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:3,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Banana&quot;</span>}]
+[{<span class="hljs-string">&quot;id&quot;</span>:1,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Cherry&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:2,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Apple&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:3,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Banana&quot;</span>}]
+[{<span class="hljs-string">&quot;id&quot;</span>:1,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Cherry&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:2,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Apple&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:3,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Banana&quot;</span>}]
+[{<span class="hljs-string">&quot;id&quot;</span>:1,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Cherry&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:2,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Apple&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:3,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Banana&quot;</span>}]
+[{<span class="hljs-string">&quot;id&quot;</span>:1,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Cherry&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:2,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Apple&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:3,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Banana&quot;</span>}]
+[{<span class="hljs-string">&quot;id&quot;</span>:1,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Cherry&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:2,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Apple&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:3,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Banana&quot;</span>}]
+[{<span class="hljs-string">&quot;id&quot;</span>:1,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Cherry&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:2,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Apple&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:3,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Banana&quot;</span>}]
+[{<span class="hljs-string">&quot;id&quot;</span>:1,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Cherry&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:2,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Apple&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:3,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Banana&quot;</span>}]
+[{<span class="hljs-string">&quot;id&quot;</span>:1,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Cherry&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:2,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Apple&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:3,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Banana&quot;</span>}]
+[{<span class="hljs-string">&quot;id&quot;</span>:1,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Cherry&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:2,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Apple&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:3,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Banana&quot;</span>}]
+[{<span class="hljs-string">&quot;id&quot;</span>:1,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Cherry&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:2,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Apple&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:3,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Banana&quot;</span>}]
+[{<span class="hljs-string">&quot;id&quot;</span>:1,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Cherry&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:2,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Apple&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:3,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Banana&quot;</span>}]
+[{<span class="hljs-string">&quot;id&quot;</span>:1,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Cherry&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:2,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Apple&quot;</span>},{<span class="hljs-string">&quot;id&quot;</span>:3,<span class="hljs-string">&quot;name&quot;</span>:<span class="hljs-string">&quot;Banana&quot;</span>}]</code></pre>
+</div>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Note</div>
+</td>
+<td class="content">
+&#x867D;&#x7136;&#x670D;&#x52A1;&#x53EF;&#x4EE5;&#x88AB;&#x8BBF;&#x95EE;&#xFF0C;&#x4F46;&#x6CA1;&#x6709;&#x5BF9;&#x5176;&#x8FDB;&#x884C;&#x8C03;&#x8FD0;&#x7EDF;&#x8BA1;&#x53CA;&#x589E;&#x52A0;&#x9650;&#x5236;&#xFF0C;&#x968F;&#x540E;&#x7684;&#x90E8;&#x5206;&#x5C06;&#x6DFB;&#x52A0; Methods&#xFF0C;Mappings&#xFF0C;Rate Limiting &#x7B49;&#x8FDB;&#x884C; API &#x8C03;&#x8FD0;&#x7EDF;&#x8BA1;&#x5F52;&#x7EB3;&#xFF0C;&#x53CA;&#x8BBF;&#x95EE;&#x9650;&#x5236;&#x3002;
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="__methods">&#x5B9A;&#x4E49; Methods</h3>
+<div class="paragraph">
+<p>&#x5728;&#x7BA1;&#x7406;&#x95E8;&#x6237;&#x4E2D;&#x9009;&#x62E9; <code>API:Fruits</code> &#x2192; <code>Integration</code> &#x2192; <code>Methods &amp; Metrics</code>&#xFF0C;</p>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/3scale-api-integration-methods.png" alt="3scale api integration methods.png"></span></p>
+</div>
+<div class="paragraph">
+<p>&#x5728; Methods &amp; Metrics &#x89C6;&#x56FE;&#x4E0B;&#x53EF;&#x4EE5;&#x5B9A;&#x4E49; Methods &#x53CA; Metrics&#xFF0C;Methods &#x662F;&#x548C;&#x540E;&#x7AEF; API &#x8FDB;&#x884C;&#x6620;&#x5C04;&#xFF0C;Metrics &#x662F;&#x6307;&#x7BA1;&#x7406;&#x7B56;&#x7565;&#x7684;&#x5B9A;&#x4E49;&#xFF0C;&#x5177;&#x4F53;&#x5305;&#x62EC;&#xFF1A;Hits&#x3001;megabytes&#x3001;CPU time &#x7B49;&#x3002;</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>&#x5728; Methods &#x5217;&#x8868;&#x53F3;&#x7AEF;&#x70B9;&#x51FB; <code>New method</code></p>
+</li>
+<li>
+<p>&#x5728;&#x5F39;&#x51FA;&#x7684;&#x754C;&#x9762;&#x4E2D;&#x8F93;&#x5165;&#xFF1A;</p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Friendly name</code> -  GET /fruits</p>
+</li>
+<li>
+<p><code>System name</code> -  fruits/getAll</p>
+</li>
+<li>
+<p><code>Description</code> - Get all fruits</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/3scale-new-methods-fruits.png" alt="3scale new methods fruits.png"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>&#x70B9;&#x51FB; <code>Create Method</code> &#x6309;&#x94AE;</p>
+</li>
+<li>
+<p>&#x521B;&#x5EFA;&#x5B8C;&#x6210;&#x540E; Methods &#x5217;&#x8868;&#x4E2D;&#x4F1A;&#x6709;&#x4E00;&#x4E2A; GET /fruits&#xFF0C; &#x51FA;&#x73B0;&#x3002;</p>
+</li>
+<li>
+<p>&#x91CD;&#x590D;&#x4EE5;&#x4E0A;&#x6B65;&#x9AA4;&#xFF0C;&#x6DFB;&#x52A0;&#x4E0B;&#x8868;&#x4E2D;&#x6240;&#x6709; Methods</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Friendly name</strong></th>
+<th class="tableblock halign-left valign-top"><strong>System name</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Description</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GET /fruit</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fruits/get</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Get a fruit by ID</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">POST /fruits</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fruits/add</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Add a fruit</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PUT /fruits</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fruits/update</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Update a fruit by ID</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DELETE /fruits</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fruits/delete</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Delete a fruit by ID</p></td>
+</tr>
+</tbody>
+</table>
+<div class="ulist">
+<ul>
+<li>
+<p>&#x5B8C;&#x6210;&#x540E;&#x5B9A;&#x4E49;&#x7684; Methods &#x5217;&#x8868;&#x5982;&#x4E0B;&#x56FE;</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/3scale-fruits-methods-list.png" alt="3scale fruits methods list.png"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Metrics &#x5B9A;&#x4E49;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x5B9A;&#x4E49;&#xFF0C;&#x4EC5;&#x6536;&#x96C6; Hits &#x6570;&#x636E;&#xFF0C;&#x53CA;&#x53EA;&#x6536;&#x96C6; API &#x8BBF;&#x95EE;&#x6B21;&#x6570;&#x7684;&#x8BB0;&#x5F55;&#x3002;</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="__mappings">&#x5B9A;&#x4E49; Mappings &#x89C4;&#x5219;</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>&#x5728;&#x7BA1;&#x7406;&#x95E8;&#x6237;&#x4E2D;&#x9009;&#x62E9; <code>API:Fruits</code> &#x2192; <code>Integration</code> &#x2192; <code>Methods &amp; Metrics</code>&#xFF0C;&#x5728; Methods &#x5217;&#x8868;&#x4E2D; <code>GET /fruits</code> &#x884C;&#x70B9;&#x51FB; <strong>Add a mapping rule</strong> &#x94FE;&#x63A5;&#xFF0C;&#x5219;&#x4F1A;&#x91CD;&#x5B9A;&#x5411;&#x5230; <code>API GATEWAY</code> &#x2192; <code>MAPPING RULES</code> &#x90E8;&#x5206;</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/3scale-mapping-rules-fruits.png" alt="3scale mapping rules fruits.png"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>&#x91CD;&#x590D;&#x70B9;&#x51FB; <strong>Add Mapping Rule</strong> &#x6309;&#x94AE;&#x591A;&#x6B21;&#xFF0C;&#x4E00;&#x6B21;&#x5B9A;&#x4E49; Mappings &#x89C4;&#x5219;&#x4E0E;&#x524D;&#x9762;&#x521B;&#x5EFA;&#x7684; Methods &#x5BF9;&#x5E94;&#xFF0C;&#x4E14;&#x6BCF;&#x6B21;&#x8F93;&#x5165;&#x5185;&#x5982;&#x5982;&#x4E0B;&#x8868;</p>
+</li>
+</ul>
+</div>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 33.3333%;">
+<col style="width: 33.3333%;">
+<col style="width: 33.3334%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top"><strong>Verb</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Pattern</strong></th>
+<th class="tableblock halign-left valign-top"><strong>Method</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GET</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/api/fruits</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fruits/getAll</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">POST</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/api/fruits</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fruits/add</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">GET</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/api/fruits/</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fruits/get</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">PUT</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/api/fruits/</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fruits/update</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">DELETE</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">/api/fruits/</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fruits/delete</p></td>
+</tr>
+</tbody>
+</table>
+<div class="paragraph">
+<p><span class="image"><img src="img/3scale-fruits-mapping-rules.png" alt="3scale fruits mapping rules.png"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>&#x70B9;&#x51FB; <strong>Update &amp; test in Staging Environment</strong>&#xFF0C;&#x6B63;&#x786E;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#x56FE;</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/3scale-api-integration-test-fruits.png" alt="3scale api integration test fruits.png"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>&#x70B9;&#x51FB; <strong>Back to Integration &amp; Configuration</strong> &#x8FD4;&#x56DE;</p>
+</li>
+<li>
+<p>&#x70B9;&#x51FB; <strong>Promote v. 2 to Production</strong> &#x53D1;&#x5E03;</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="__rate_limits">&#x8BBE;&#x5B9A; Rate Limits</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>&#x5728;&#x7BA1;&#x7406;&#x95E8;&#x6237;&#xFF0C;&#x9009;&#x62E9; <code>API:Fruits</code> &#x2192; <code>Overview</code> &#x2192; <code>Published Application Plans</code></p>
+</li>
+<li>
+<p>&#x9009;&#x62E9; <code>Basic</code></p>
+</li>
+<li>
+<p>&#x6ED1;&#x52A8;&#x9F20;&#x6807;&#x5230; <code>Metrics, Methods, Limits &amp; Pricing Rules</code>&#x90E8;&#x5206;</p>
+</li>
+<li>
+<p>&#x70B9;&#x51FB; POST, PUT, DELETE &#x5BF9;&#x5E94;&#x7684;&#x7EFF;&#x8272;&#x5BF9;&#x53F7;&#xFF0C;Disable &#x6389; Basic Plan &#x6DFB;&#x52A0;&#x3001;&#x66F4;&#x65B0;&#x3001;&#x5220;&#x9664; Fruit &#x7684;&#x80FD;&#x529B;</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/3scale-furits-disable-CUD.png" alt="3scale furits disable CUD.png"></span></p>
+</div>
+<div class="sect3">
+<h4 id="_get_fruits_rate_limits">GET /fruits &#x8BBE;&#x8BA1; Rate Limits</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>&#x57FA;&#x4E8E; <code>GET /fruits</code> &#x65B9;&#x6CD5;&#x884C;&#xFF0C;&#x70B9;&#x51FB; <code>Limits (0)</code></p>
+</li>
+<li>
+<p>&#x70B9;&#x51FB; <code>New Usage limit</code> &#x6309;&#x94AE;&#xFF0C;&#x6DFB;&#x52A0;&#x5982;&#x4E0B;&#x503C;</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Period - <code>hour</code></p>
+</li>
+<li>
+<p>Max. value - <code>10</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/3scale-uage-limits-10-per-hour.png" alt="3scale uage limits 10 per hour.png"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>&#x70B9;&#x51FB; <strong>Create usage limit</strong> &#x6309;&#x94AE;&#xFF0C;&#x521B;&#x5EFA; Basic &#x8BA1;&#x5212;&#x6BCF;&#x5C0F;&#x65F6;&#x5141;&#x8BB8;&#x8BBF;&#x95EE;&#x67E5;&#x8BE2;&#x6240;&#x6709; Fruits 10 &#x6B21;</p>
+</li>
+<li>
+<p>&#x91CD;&#x590D;&#x4E0A;&#x9762;&#x6B65;&#x9AA4;&#xFF0C;&#x521B;&#x5EFA; Basic &#x8BA1;&#x5212;&#x6BCF;&#x5206;&#x949F;&#x5141;&#x8BB8;&#x8BBF;&#x95EE;&#x67E5;&#x8BE2;&#x6240;&#x6709; Fruits 2 &#x6B21;</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_get_fruit_rate_limits">GET /fruit &#x8BBE;&#x8BA1; Rate Limits</h4>
+<div class="ulist">
+<ul>
+<li>
+<p>&#x57FA;&#x4E8E; <code>GET /fruits</code> &#x65B9;&#x6CD5;&#x884C;&#xFF0C;&#x70B9;&#x51FB; <code>Limits (0)</code></p>
+</li>
+<li>
+<p>&#x70B9;&#x51FB; <code>New Usage limit</code> &#x6309;&#x94AE;&#xFF0C;&#x6DFB;&#x52A0;&#x5982;&#x4E0B;&#x503C;</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Period - <code>hour</code></p>
+</li>
+<li>
+<p>Max. value - <code>100</code></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/3scale-uage-limits-100-per-hour.png" alt="3scale uage limits 100 per hour.png"></span></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>&#x70B9;&#x51FB; <strong>Create usage limit</strong> &#x6309;&#x94AE;&#xFF0C;&#x521B;&#x5EFA; Basic &#x8BA1;&#x5212;&#x6BCF;&#x5C0F;&#x65F6;&#x5141;&#x8BB8;&#x8BBF;&#x95EE;&#x67E5;&#x8BE2;&#x6240;&#x6709; Fruits 100 &#x6B21;</p>
+</li>
+<li>
+<p>&#x91CD;&#x590D;&#x4E0A;&#x9762;&#x6B65;&#x9AA4;&#xFF0C;&#x521B;&#x5EFA; Basic &#x8BA1;&#x5212;&#x6BCF;&#x5206;&#x949F;&#x5141;&#x8BB8;&#x8BBF;&#x95EE;&#x67E5;&#x8BE2;&#x6240;&#x6709; Fruits 5 &#x6B21;</p>
+</li>
+<li>
+<p>&#x70B9;&#x51FB; <strong>Update Application plan</strong> &#x66F4;&#x65B0;&#x5E94;&#x7528;&#x8BA1;&#x5212;</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="__rate_limits_2">&#x6D4B;&#x8BD5; Rate Limits</h3>
+<div class="paragraph">
+<p>&#x9009;&#x62E9; <code>Audience</code> &#x2192; <code>Application</code> &#x2192; <code>Listing</code>, &#x5206;&#x522B;&#x70B9;&#x51FB; Fruits Basic Application &#x548C; Fruits Premium Application&#xFF0C;&#x5206;&#x522B;&#x8BB0;&#x5F55;&#x5BF9;&#x5E94; User Key&#x3002;</p>
+</div>
+<div class="sect3">
+<h4 id="_basic_application_user_key_crud">Basic Application &#x5BF9;&#x5E94;&#x7684; User Key &#x8FDB;&#x884C; CRUD &#x64CD;&#x4F5C;</h4>
+<div class="listingblock">
+<div class="title"><strong>1. &#x8FDE;&#x7EED;&#x6267;&#x884C;&#x67E5;&#x8BE2;&#x6240;&#x6709; Fruits</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-text" data-lang="text">$ for i in {1..5} ; do curl -k &quot;https://fruits-apicast-prod.apps.example.com/api/fruits?user_key=3b823b8877d11023bdf8cb5477251883&quot; ; echo ; done
+[{&quot;id&quot;:1,&quot;name&quot;:&quot;Cherry&quot;},{&quot;id&quot;:2,&quot;name&quot;:&quot;Apple&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Banana&quot;}]
+[{&quot;id&quot;:1,&quot;name&quot;:&quot;Cherry&quot;},{&quot;id&quot;:2,&quot;name&quot;:&quot;Apple&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Banana&quot;}]
+[{&quot;id&quot;:1,&quot;name&quot;:&quot;Cherry&quot;},{&quot;id&quot;:2,&quot;name&quot;:&quot;Apple&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Banana&quot;}]
+Limits exceeded
+Limits exceeded</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title"><strong>2. &#x8FDE;&#x7EED;&#x6267;&#x884C;&#x6839;&#x636E; ID &#x67E5;&#x8BE2; Fruits</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-text" data-lang="text">$ for i in {1..10} ; do curl -k &quot;https://fruits-apicast-prod.apps.example.com/api/fruits/1?user_key=3b823b8877d11023bdf8cb5477251883&quot; ; echo ; done
+{&quot;id&quot;:1,&quot;name&quot;:&quot;Cherry&quot;}
+{&quot;id&quot;:1,&quot;name&quot;:&quot;Cherry&quot;}
+{&quot;id&quot;:1,&quot;name&quot;:&quot;Cherry&quot;}
+Limits exceeded
+Limits exceeded
+Limits exceeded
+Limits exceeded
+Limits exceeded
+Limits exceeded
+Limits exceeded</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title"><strong>3. &#x521B;&#x5EFA;&#x4E00;&#x4E2A; Fruits</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-text" data-lang="text">$ curl -k -X POST --header &apos;Content-Type: application/json&apos; --header &apos;Accept: application/json&apos; -d &apos;{&quot;id&quot;: 11, &quot;name&quot;: &quot;mongo&quot;}&apos; &apos;https://fruits-apicast-prod.apps.example.com/api/fruits?user_key=3b823b8877d11023bdf8cb5477251883&apos;
+Limits exceeded</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title"><strong>4. &#x66F4;&#x65B0;&#x4E00;&#x4E2A; Fruits</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-text" data-lang="text">$ curl -k -X PUT --header &apos;Content-Type: application/json&apos; --header &apos;Accept: application/json&apos; -d &apos;{&quot;id&quot;: 11, &quot;name&quot;: &quot;mongo&quot;}&apos; &apos;https://fruits-apicasmple.com/api/fruits/10?user_key=3b823b8877d11023bdf8cb5477251883&apos;
+Limits exceeded</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title"><strong>5. &#x5220;&#x9664;</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-text" data-lang="text">$ curl -k -X DELETE --header &apos;Accept: application/json&apos; &apos;https://fruits-apicast-prod.apps.example.com/api/fruits/11?user_key=3b823b8877d11023bdf8cb5477251883&apos;
+Limits exceeded</code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_premium_application_user_key_crud">Premium Application &#x5BF9;&#x5E94;&#x7684; User Key &#x8FDB;&#x884C; CRUD &#x64CD;&#x4F5C;</h4>
+<div class="listingblock">
+<div class="title"><strong>1. &#x8FDE;&#x7EED;&#x6267;&#x884C;&#x67E5;&#x8BE2;&#x6240;&#x6709; Fruits</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-text" data-lang="text">$ for i in {1..5} ; do curl -k &quot;https://fruits-apicast-prod.apps.example.com/api/fruits?user_key=e2403e7bc537bfd24aee7e3cfa8b0991&quot; ; echo ; done
+[{&quot;id&quot;:1,&quot;name&quot;:&quot;Cherry&quot;},{&quot;id&quot;:2,&quot;name&quot;:&quot;Apple&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Banana&quot;}]
+[{&quot;id&quot;:1,&quot;name&quot;:&quot;Cherry&quot;},{&quot;id&quot;:2,&quot;name&quot;:&quot;Apple&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Banana&quot;}]
+[{&quot;id&quot;:1,&quot;name&quot;:&quot;Cherry&quot;},{&quot;id&quot;:2,&quot;name&quot;:&quot;Apple&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Banana&quot;}]
+[{&quot;id&quot;:1,&quot;name&quot;:&quot;Cherry&quot;},{&quot;id&quot;:2,&quot;name&quot;:&quot;Apple&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Banana&quot;}]
+[{&quot;id&quot;:1,&quot;name&quot;:&quot;Cherry&quot;},{&quot;id&quot;:2,&quot;name&quot;:&quot;Apple&quot;},{&quot;id&quot;:3,&quot;name&quot;:&quot;Banana&quot;}]</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title"><strong>2. &#x8FDE;&#x7EED;&#x6267;&#x884C;&#x6839;&#x636E; ID &#x67E5;&#x8BE2; Fruits</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-text" data-lang="text">$ for i in {1..10} ; do curl -k &quot;https://fruits-apicast-prod.apps.example.com/api/fruits/1?user_key=e2403e7bc537bfd24aee7e3cfa8b0991&quot; ; echo ; done
+{&quot;id&quot;:1,&quot;name&quot;:&quot;Cherry&quot;}
+{&quot;id&quot;:1,&quot;name&quot;:&quot;Cherry&quot;}
+{&quot;id&quot;:1,&quot;name&quot;:&quot;Cherry&quot;}
+{&quot;id&quot;:1,&quot;name&quot;:&quot;Cherry&quot;}
+{&quot;id&quot;:1,&quot;name&quot;:&quot;Cherry&quot;}
+{&quot;id&quot;:1,&quot;name&quot;:&quot;Cherry&quot;}
+{&quot;id&quot;:1,&quot;name&quot;:&quot;Cherry&quot;}
+{&quot;id&quot;:1,&quot;name&quot;:&quot;Cherry&quot;}
+{&quot;id&quot;:1,&quot;name&quot;:&quot;Cherry&quot;}
+{&quot;id&quot;:1,&quot;name&quot;:&quot;Cherry&quot;}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title"><strong>3. &#x521B;&#x5EFA;&#x4E00;&#x4E2A; Fruits</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-text" data-lang="text">$ curl -k -X POST --header &apos;Content-Type: application/json&apos; --header &apos;Accept: application/json&apos; -d &apos;{&quot;id&quot;: 11, &quot;name&quot;: &quot;mongo&quot;}&apos; &apos;https://fruits-apicast-prod.apps.example.com/api/fruits?user_key=e2403e7bc537bfd24aee7e3cfa8b0991&apos;
+{&quot;id&quot;:11,&quot;name&quot;:&quot;mongo&quot;}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title"><strong>4. &#x66F4;&#x65B0;&#x4E00;&#x4E2A; Fruits</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-text" data-lang="text">$ curl -k -X PUT --header &apos;Content-Type: application/json&apos; --header &apos;Accept: application/json&apos; -d &apos;{&quot;id&quot;: 11, &quot;name&quot;: &quot;mongoDB&quot;}&apos; &apos;https://fruits-apicast-prod.apps.example.com/api/fruits/11?user_key=e2403e7bc537bfd24aee7e3cfa8b0991&apos;
+{&quot;id&quot;:11,&quot;name&quot;:&quot;mongoDB&quot;}</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title"><strong>5. &#x5220;&#x9664;</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-text" data-lang="text">$ curl -k -X DELETE --header &apos;Accept: application/json&apos; &apos;https://fruits-apicast-prod.apps.example.com/api/fruits/11?user_key=e2403e7bc537bfd24aee7e3cfa8b0991&apos;</code></pre>
+</div>
 </div>
 </div>
 </div>
@@ -996,10 +1875,14 @@ Limits exceeded</code></pre>
 
             
                 
-                <a href="appdoc.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 开发者门户">
+                <a href="appdoc.html" class="navigation navigation-prev " aria-label="Previous page: 开发者门户">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
+                
+                <a href="api/readme.html" class="navigation navigation-next " aria-label="Next page: API LIFECYCLE STAGE">
+                    <i class="fa fa-angle-right"></i>
+                </a>
                 
             
         
@@ -1008,7 +1891,7 @@ Limits exceeded</code></pre>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"微服务管理","level":"1.3.2","depth":2,"previous":{"title":"开发者门户","level":"1.3.1.4","depth":3,"path":"3scale/appdoc.adoc","ref":"3scale/appdoc.adoc","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{"GUID":"na39","OCP_USER_ID":"ksoong-redhat.com","copyrightYear":"2018","copyrightHolder":"Kylin Soong"},"plugins":["collapsible-menu","donate","-sharing","sharing-plus","splitter","back-to-top-button","edit-link"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Kylin Soong 2018","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"collapsible-menu":{},"splitter":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"donate":{"alipay":"http://ksoong.org/docs/content/images/alipay.png","alipayText":"支付宝捐赠","button":"赞赏","title":"","wechat":"http://ksoong.org/docs/content/images/wechat.png","wechatText":"微信捐赠"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"sharing":{"weibo":true,"linkedin":true,"google":true,"facebook":true,"all":["facebook","google","linkedin","weibo"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/kylinsoong/fuse-get-started"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css"}},"file":{"path":"3scale/backend-services.adoc","mtime":"2019-01-23T11:16:36.112Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2019-01-23T11:17:35.609Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"微服务管理","level":"1.3.2","depth":2,"next":{"title":"API LIFECYCLE STAGE","level":"1.3.3","depth":2,"path":"3scale/api/readme.adoc","ref":"3scale/api/readme.adoc","articles":[{"title":"Design","level":"1.3.3.1","depth":3,"path":"3scale/api/design.adoc","ref":"3scale/api/design.adoc","articles":[]}]},"previous":{"title":"开发者门户","level":"1.3.1.4","depth":3,"path":"3scale/appdoc.adoc","ref":"3scale/appdoc.adoc","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{"GUID":"na39","OCP_USER_ID":"ksoong-redhat.com","copyrightYear":"2018","copyrightHolder":"Kylin Soong"},"plugins":["collapsible-menu","donate","-sharing","sharing-plus","splitter","back-to-top-button","edit-link"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Kylin Soong 2018","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"collapsible-menu":{},"splitter":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"donate":{"alipay":"http://ksoong.org/docs/content/images/alipay.png","alipayText":"支付宝捐赠","button":"赞赏","title":"","wechat":"http://ksoong.org/docs/content/images/wechat.png","wechatText":"微信捐赠"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"sharing":{"weibo":true,"linkedin":true,"google":true,"facebook":true,"all":["facebook","google","linkedin","weibo"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/kylinsoong/fuse-get-started"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css"}},"file":{"path":"3scale/backend-services.adoc","mtime":"2019-01-24T11:01:56.901Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2019-01-24T11:02:14.642Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
