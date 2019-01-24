@@ -16,3 +16,5 @@
 ... link:3scale/application-plans.adoc[应用计划]
 ... link:3scale/appdoc.adoc[开发者门户]
 .. link:3scale/backend-services.adoc[微服务管理]
+.. link:3scale/api/readme.adoc[API LIFECYCLE STAGE]
+... link:3scale/api/design.adoc[Design]
