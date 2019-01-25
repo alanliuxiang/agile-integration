@@ -4,7 +4,7 @@
 
     <groupId>org.apache.camel</groupId>
     <artifactId>camel-dev-sample</artifactId>
-    <version>1.0-TEST</version>
+    <version>1.0</version>
     <packaging>jar</packaging>
 
     <licenses>
@@ -22,9 +22,9 @@
     <maven.compiler.target>1.8</maven.compiler.target>
     <maven.compiler.source>1.8</maven.compiler.source>
 
-    <!-- the version of the BOM, defining all the dependency versions 
-    <fabric8.bom.version>1.2.0.redhat-630262</fabric8.bom.version>
-    <fabric.version>1.2.0.redhat-630262</fabric.version>-->
+    <!-- the version of the BOM, defining all the dependency versions -->
+    <fabric8.bom.version>1.2.0.redhat-630371</fabric8.bom.version>
+    <fabric.version>1.2.0.redhat-630262</fabric.version>
     <fuse.version>7.2.0.fuse-720020-redhat-00001</fuse.version>
 
     <!-- fabric8 deploy profile configuration -->
@@ -33,7 +33,7 @@
     <fabric8.features/>
   </properties>
 
-<!--  
+  
     <dependencyManagement>
     <dependencies>
       <dependency>
@@ -45,7 +45,7 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
-  -->
+  <!--
   <dependencyManagement>
     <dependencies>
       <dependency>
@@ -57,6 +57,7 @@
       </dependency>
     </dependencies>
   </dependencyManagement>
+  -->
 
     <dependencies>
     <!--
@@ -90,16 +91,6 @@
     <dependency>
       <groupId>org.apache.activemq</groupId>
       <artifactId>activemq-camel</artifactId>
-    </dependency>
-    
-    <dependency>
-      <groupId>org.fusesource</groupId>
-      <artifactId>camel-sap</artifactId>
-    </dependency>
-    
-    <dependency>
-      <groupId>mysql</groupId>
-      <artifactId>mysql-connector-java</artifactId>
     </dependency>
     
     <dependency>
