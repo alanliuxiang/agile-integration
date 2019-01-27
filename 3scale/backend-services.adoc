@@ -838,3 +838,22 @@ $ curl -k "https://booking-apicast-staging.apps.example.com/api/booking?user_key
 ----
 [26/Jan/2019:00:22:49 +0000] booking-apicast-staging.apps.example.com:8080 10.244.6.1:51846 "GET /api/booking?user_key=ca6d73f3aff8addf7eb2d73896af7302 HTTP/1.1" 200 22 (0.052) 0
 ----
+
+=== IP Check Logging Policy 设置
+
+* 在管理门户中选择 `API:Booking` -> `Integration` -> `Configuration`
+* 点击 `edit APIcast configuration` 链接
+* 滑动鼠标到 `POLICIES` 部分，点击 *Add Policy* 按钮
+* 在下拉的 Policy 列表中选择 `IP Check`
+* 点击选择 `IP Check`
+* 拖动 `IP Check` 策略，使之在 `3scale Apicast` 之前，`Logging` 策略之后
+
+image:img/3scale-apigateway-policy-chians-ipcheck.png[]
+
+* 点击 `IP Check` 策略，展开更多配置项目，配置如下所示， Block 10.66.208.101 IP 地址服务器发送请求。
+
+image:img/3scale-apigateway-policy-chians-ipcheck-edit.png[]
+
+* 点击 *Update Policy* 按钮完成 IP Check  策略设置
+* 点击 *Update and test in Staging Environment* 测试配置
+
