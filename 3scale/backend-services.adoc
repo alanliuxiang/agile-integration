@@ -682,6 +682,46 @@ $ curl -k -X PUT --header 'Content-Type: application/json' --header 'Accept: app
 $ curl -k -X DELETE --header 'Accept: application/json' 'https://fruits-apicast-prod.apps.example.com/api/fruits/11?user_key=e2403e7bc537bfd24aee7e3cfa8b0991'
 ----
 
+=== OAI 2.0 文档编辑
+
+拷贝 http://fruits-backend-services.apps.example.com/api/swagger.json[http://fruits-backend-services.apps.example.com/api/swagger.json] 中的内容到 http://editor.swagger.io[http://editor.swagger.io]。
+
+[source, json]
+.*1. 编辑 14 -16行，host 修改为 public api URL，及添加 schema 为 https*
+----
+host: 'fruits-apicast-prod.apps.example.com:443'
+basePath: /
+schemes:
+  - https
+----
+
+[source, json]
+.*2. 所有 GTE/POST/PUT/DELETE 接口添加如下 Parameter 定义*
+----
+      parameters:
+        - name: user_key
+          in: query
+          description: Your API access key
+          required: true
+          x-data-threescale-name: user_keys
+          type: string
+----
+
+*3. 将编辑完的文件以 JSON 格式导出*
+
+=== OAI 2.0 文档导入
+
+* 选择 `API:Fruits` -> `ActiveDocs`
+* 在文档列表右侧点击 `Create your first spec`
+** Name - `Fruits API Specification`
+** System name - `fruits_spec`
+** 选择 `Publish`
+** Description - `This is the Fruits API Specification.`
+** API JSON Spec - 拷贝 上面步骤导除的 JSON 文件内容
+* 点击 *Create Service* 按钮完成文档创建
+
+
+
 == Booking 服务管理
 
 === 目的
@@ -856,4 +896,19 @@ image:img/3scale-apigateway-policy-chians-ipcheck-edit.png[]
 
 * 点击 *Update Policy* 按钮完成 IP Check  策略设置
 * 点击 *Update and test in Staging Environment* 测试配置
+
+=== IP Check Logging Policy 测试
+
+[source, text]
+.*1. 重新部署 stage-apicast*
+----
+oc rollout latest dc/apicast-staging
+----
+
+[source, text]
+.*2. 在 10.66.208.101 服务器上使用 Staging URL 访问 Booking Service*
+----
+$ curl -k "https://booking-apicast-staging.apps.example.com/api/booking?user_key=ca6d73f3aff8addf7eb2d73896af7302"
+IP address not allowed
+----
 
