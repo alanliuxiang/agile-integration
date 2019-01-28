@@ -20,3 +20,4 @@
 ... link:3scale/api/design.adoc[Design]
 . link:fuse/training.adoc[培训]
 .. link:fuse/camel-dev.adoc[Camel 开发培训]
+.. link:fuse/usecase.adoc[Spring Boot 集成开发]

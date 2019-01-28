@@ -101,7 +101,7 @@ image:img/backend-services-docs-editor.png[]
 
 image:img/backend-services-ui-test.png[]
 
-== cooking 服务管理
+== Cooking 服务管理
 
 === 目的
 
@@ -680,5 +680,235 @@ $ curl -k -X PUT --header 'Content-Type: application/json' --header 'Accept: app
 .*5. 删除*
 ----
 $ curl -k -X DELETE --header 'Accept: application/json' 'https://fruits-apicast-prod.apps.example.com/api/fruits/11?user_key=e2403e7bc537bfd24aee7e3cfa8b0991'
+----
+
+=== OAI 2.0 文档编辑
+
+拷贝 http://fruits-backend-services.apps.example.com/api/swagger.json[http://fruits-backend-services.apps.example.com/api/swagger.json] 中的内容到 http://editor.swagger.io[http://editor.swagger.io]。
+
+[source, json]
+.*1. 编辑 14 -16行，host 修改为 public api URL，及添加 schema 为 https*
+----
+host: 'fruits-apicast-prod.apps.example.com:443'
+basePath: /
+schemes:
+  - https
+----
+
+[source, json]
+.*2. 所有 GTE/POST/PUT/DELETE 接口添加如下 Parameter 定义*
+----
+      parameters:
+        - name: user_key
+          in: query
+          description: Your API access key
+          required: true
+          x-data-threescale-name: user_keys
+          type: string
+----
+
+*3. 将编辑完的文件以 JSON 格式导出*
+
+=== OAI 2.0 文档导入
+
+* 选择 `API:Fruits` -> `ActiveDocs`
+* 在文档列表右侧点击 `Create your first spec`
+** Name - `Fruits API Specification`
+** System name - `fruits_spec`
+** 选择 `Publish`
+** Description - `This is the Fruits API Specification.`
+** API JSON Spec - 拷贝 上面步骤导除的 JSON 文件内容
+* 点击 *Create Service* 按钮完成文档创建
+
+
+
+== Booking 服务管理
+
+=== 目的
+
+本部分是对 API 网关的个性化定制，基于两个流行的插件，通过定义策略链的方式，实现 API 网关
+
+* 日志记录
+* IP 检测
+
+=== API Gateway 上创建 Stage 和 Prod 路径
+
+NOTE: 本部分内容可选择，如果不创建，则在后续服务集成步骤在 3Scale 界面点击创建。
+
+[source, bash]
+----
+oc create route edge booking-apicast-prod --service=apicast-production --hostname=booking-apicast-prod.apps.example.com -n 3scale-amp
+oc create route edge booking-apicast-staging --service=apicast-staging --hostname=booking-apicast-staging.apps.example.com -n 3scale-amp
+----
+
+=== 创建 Booking API
+
+* 登录 3Scale 管理门户
+* 选择 `Dashboard` -> `APIS`
+* 点击 `New API` 链接，开始创建一个 API
+* 在新弹出的对话框中输入
+** Name - `Booking`
+** System name - `booking_api`
+** Description - `Booking API`
+* 点击 `Add API` 按钮完成创建
+
+=== 定义 Methods 及 Metrics
+
+在管理门户中选择 `API:Booking` -> `Integration` -> `Methods & Metrics`，
+
+image:img/3scale-api-integration-methods.png[]
+
+在 Methods & Metrics 视图下可以定义 Methods 及 Metrics，Methods 是和后端 API 进行映射，Metrics 是指管理策略的定义，具体包括：Hits、megabytes、CPU time 等。
+
+* 在 Methods 列表右端点击 `New method`
+* 在弹出的界面中输入：
+** `Friendly name` -  GET /booking
+** `System name` -  get_booking
+** `Description` - Booking GET endpoint that returns list of bookings
+
+image:img/3scale-new-methods-booking.png[]
+
+ 点击 `Create Method` 按钮
+* 创建完成后 Methods 列表中会有一个 GET /booking， 出现。
+* Metrics 定义使用默认定义，仅收集 Hits 数据，及只收集 API 访问次数的记录。
+
+=== 创建 Application Plan
+
+* 登录管理门户，选择 `API:booking` -> `Overview`
+* 在 *Published Application Plans* 部分，点击 `Create Application Plan`
+* `Name` 栏输入 Basic
+* `System name` 栏输入 booking_basic
+* `Applications require approval?` 选择 Y
+* 点击 `Create Application Plan` 按钮创建 Plan
+* 在 Application Plan 列表中点击 *Publish* 链接发布
+* 在 Default Plan 中选择 Basic
+
+=== 创建开发者账户
+
+* 登录 3Scale 管理门户
+* 选择 `Audience` -> `Accounts` -> `Listing`
+* 点击 `Create` 按钮，在弹出的 Create new Account 界面填入如下内容
+** Username - booking_user
+** Email - booking_user@example.com
+** Password - redhat
+** Organization/Group Name - RH/Booking
+
+image:img/3scale-create-account-booking.png[]
+
+* 点击 `Create` 完成创建
+
+NOTE: 账户创建完成后会自动创建一个 App，并关联默认 Basic 计划。
+
+=== 微服务集成
+
+* 在管理门户中选择 `API:Booking` -> `Integration` -> `Configuration`
+* 点击 *Add the base URL of your API and save the configuration* 按钮
+* 在 Integration 界面填入
+** Private Base URL: http://booking-backend-services.apps.example.com:80
+** Staging Public Base URL: https://booking-apicast-staging.apps.example.com:443
+** Production Public Base URL: https://booking-apicast-prod.apps.example.com:443
+* 定义 MAPPING RULES: `/api/booking` -> `get_booking`
+
+image:img/3scale-integration-booking-create.png[]
+
+* 在 *Update & test in Staging Environment* 部分填入 API test GET request URL 为 `/api/booking`
+* 点击 *Update & test in Staging Environment*，正确结果如下图
+
+image:img/3scale-api-integration-test-booking.png[]
+
+* 点击 *Back to Integration & Configuration* 返回
+* 点击 *Promote v. 1 to Production* 发布
+
+=== 微服务访问测试
+
+选择 `Audience` -> `Application` -> `Listing`, 点击 RH/Booking's App，记录 User Key。使用此 User Key，执行如下 GET 调运 10 次。
+
+[source, bash]
+----
+$ for i in {1..10} ; do curl -k "https://booking-apicast-prod.apps.example.com/api/booking?user_key=ca6d73f3aff8addf7eb2d73896af7302" ; echo ; done
+{"booking":"ROW10086"}
+{"booking":"ROW10086"}
+{"booking":"ROW10086"}
+{"booking":"ROW10086"}
+{"booking":"ROW10086"}
+{"booking":"ROW10086"}
+{"booking":"ROW10086"}
+{"booking":"ROW10086"}
+{"booking":"ROW10086"}
+{"booking":"ROW10086"}
+----
+
+=== Logging Policy 设置
+
+* 在管理门户中选择 `API:Booking` -> `Integration` -> `Configuration`
+* 点击 `edit APIcast configuration` 链接
+* 滑动鼠标到 `POLICIES` 部分，点击 *Add Policy* 按钮
+
+image:img/3scale-apigatewat-policy-add.png[]
+
+* 点击选择 `Logging`
+* 拖动 `Logging` 策略，使之在 `3scale Apicast` 之前
+
+image:img/3scale-apigateway-policy-chians.png[]
+
+* 点击 `Logging` 策略，展开更多配置项目，选择 `enable_access_logs`
+
+image:img/3scale-apigateway-enable-accesslog.png[]
+
+* 点击 *Update Policy* 按钮完成 Logging 策略设置
+* 点击 *Update and test in Staging Environment* 测试配置
+
+=== Logging Policy 测试
+
+[source, text]
+.*1. 重新部署 stage-apicast*
+----
+oc rollout latest dc/apicast-staging
+----
+
+[source, text]
+.*2. Staging URL 访问 Booking Service*
+----
+$ curl -k "https://booking-apicast-staging.apps.example.com/api/booking?user_key=ca6d73f3aff8addf7eb2d73896af7302"
+{"booking":"ROW10086"}
+----
+
+[source, text]
+.*3. stage-apicast 容器上查看 access 日志*
+----
+[26/Jan/2019:00:22:49 +0000] booking-apicast-staging.apps.example.com:8080 10.244.6.1:51846 "GET /api/booking?user_key=ca6d73f3aff8addf7eb2d73896af7302 HTTP/1.1" 200 22 (0.052) 0
+----
+
+=== IP Check Logging Policy 设置
+
+* 在管理门户中选择 `API:Booking` -> `Integration` -> `Configuration`
+* 点击 `edit APIcast configuration` 链接
+* 滑动鼠标到 `POLICIES` 部分，点击 *Add Policy* 按钮
+* 在下拉的 Policy 列表中选择 `IP Check`
+* 点击选择 `IP Check`
+* 拖动 `IP Check` 策略，使之在 `3scale Apicast` 之前，`Logging` 策略之后
+
+image:img/3scale-apigateway-policy-chians-ipcheck.png[]
+
+* 点击 `IP Check` 策略，展开更多配置项目，配置如下所示， Block 10.66.208.101 IP 地址服务器发送请求。
+
+image:img/3scale-apigateway-policy-chians-ipcheck-edit.png[]
+
+* 点击 *Update Policy* 按钮完成 IP Check  策略设置
+* 点击 *Update and test in Staging Environment* 测试配置
+
+=== IP Check Logging Policy 测试
+
+[source, text]
+.*1. 重新部署 stage-apicast*
+----
+oc rollout latest dc/apicast-staging
+----
+
+[source, text]
+.*2. 在 10.66.208.101 服务器上使用 Staging URL 访问 Booking Service*
+----
+$ curl -k "https://booking-apicast-staging.apps.example.com/api/booking?user_key=ca6d73f3aff8addf7eb2d73896af7302"
+IP address not allowed
 ----
 
