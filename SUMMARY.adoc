@@ -1,7 +1,7 @@
 = Summary
 
 . link:README.adoc[INTRODUCTION]
-. link:fuse/README.adoc[Fuse 7]
+. link:fuse/README.adoc[Fuse]
 .. link:fuse/software.adoc[软件安装]
 .. link:labs.adoc[LABS]
 ... link:file-split-transform/README.adoc[Split and Transform Files]

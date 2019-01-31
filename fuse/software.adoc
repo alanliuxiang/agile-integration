@@ -1,6 +1,27 @@
 = 软件安装
 :toc: manual
 
+== Postman
+
+*1. 下载*
+
+打开 https://www.getpostman.com/downloads/ 下载。
+
+[source, text]
+.*2. 解压完成安装*
+----
+$ tar -xvf Postman-linux-x64-6.7.2.tar.gz
+----
+
+[source, text]
+.*3. 运行*
+----
+$ cd Postman/
+$ ./Postman
+----
+
+image:img/postman-sample.png[]
+
 == Fuse on Karaf 
 
 *1. 下载*
