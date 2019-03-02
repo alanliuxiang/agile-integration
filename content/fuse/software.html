@@ -61,7 +61,7 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="../labs.html" />
+    <link rel="next" href="getstart.html" />
     
     
     <link rel="prev" href="./" />
@@ -111,7 +111,7 @@
                 <a href="./">
             
                     
-                    Fuse 7
+                    Fuse
             
                 </a>
             
@@ -133,7 +133,78 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="../labs.html">
+        <li class="chapter " data-level="1.2.2" data-path="getstart.html">
+            
+                <a href="getstart.html">
+            
+                    
+                    快速开始
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.2.1" data-path="gs-fis-rest.html">
+            
+                <a href="gs-fis-rest.html">
+            
+                    
+                    Format/Bridge/Expose REST
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.2" data-path="gs-data-transformation.html">
+            
+                <a href="gs-data-transformation.html">
+            
+                    
+                    报文格式转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.3" data-path="gs-fis-soap2rest.html">
+            
+                <a href="gs-fis-soap2rest.html">
+            
+                    
+                    SOAP 2 REST
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2.4" data-path="sso-3scale.html">
+            
+                <a href="sso-3scale.html">
+            
+                    
+                    SSO, 3Scale 集成
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../labs.html">
             
                 <a href="../labs.html">
             
@@ -147,7 +218,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.2.2.1" data-path="../file-split-transform/">
+        <li class="chapter " data-level="1.2.3.1" data-path="../file-split-transform/">
             
                 <a href="../file-split-transform/">
             
@@ -160,7 +231,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2.2" data-path="../rest-split-transform-amq/">
+        <li class="chapter " data-level="1.2.3.2" data-path="../rest-split-transform-amq/">
             
                 <a href="../rest-split-transform-amq/">
             
@@ -173,7 +244,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2.3" data-path="../rest-publish-and-fix-errors/">
+        <li class="chapter " data-level="1.2.3.3" data-path="../rest-publish-and-fix-errors/">
             
                 <a href="../rest-publish-and-fix-errors/">
             
@@ -186,7 +257,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2.4" data-path="../enrich-content-rest-and-ws-microservices/">
+        <li class="chapter " data-level="1.2.3.4" data-path="../enrich-content-rest-and-ws-microservices/">
             
                 <a href="../enrich-content-rest-and-ws-microservices/">
             
@@ -199,7 +270,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2.5" data-path="../legacy-soap-rest-wrapper/">
+        <li class="chapter " data-level="1.2.3.5" data-path="../legacy-soap-rest-wrapper/">
             
                 <a href="../legacy-soap-rest-wrapper/">
             
@@ -214,6 +285,45 @@
     
 
             </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="fuse-online.html">
+            
+                <a href="fuse-online.html">
+            
+                    
+                    Fuse Online
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="fuse-all-in-one.html">
+            
+                <a href="fuse-all-in-one.html">
+            
+                    
+                    All In One
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="camel-maximo-sap.html">
+            
+                <a href="camel-maximo-sap.html">
+            
+                    
+                    IBM Maximo SAP Integration
+            
+                </a>
+            
+
             
         </li>
     
@@ -451,9 +561,44 @@
 <div id="toc" class="toc">
 <div id="toctitle">Table of Contents</div>
 <ul class="sectlevel1">
+<li><a href="#_postman">Postman</a></li>
 <li><a href="#_fuse_on_karaf">Fuse on Karaf</a></li>
 <li><a href="#_developer_studio">Developer Studio</a></li>
+<li><a href="#_jboss_fuse_6_3">JBoss Fuse 6.3</a>
+<ul class="sectlevel2">
+<li><a href="#__">&#x7EC4;&#x5EFA;&#x660E;&#x7EC6;</a></li>
+<li><a href="#_fuse_on_apache_karaf">Fuse on Apache Karaf</a></li>
+<li><a href="#__feature">&#x5B89;&#x88C5;&#x5E38;&#x89C1; Feature</a></li>
 </ul>
+</li>
+</ul>
+</div>
+<div class="sect1">
+<h2 id="_postman">Postman</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><strong>1. &#x4E0B;&#x8F7D;</strong></p>
+</div>
+<div class="paragraph">
+<p>&#x6253;&#x5F00; <a href="https://www.getpostman.com/downloads/" class="bare" target="_blank">https://www.getpostman.com/downloads/</a> &#x4E0B;&#x8F7D;&#x3002;</p>
+</div>
+<div class="listingblock">
+<div class="title"><strong>2. &#x89E3;&#x538B;&#x5B8C;&#x6210;&#x5B89;&#x88C5;</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-text" data-lang="text">$ tar -xvf Postman-linux-x64-6.7.2.tar.gz</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title"><strong>3. &#x8FD0;&#x884C;</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-text" data-lang="text">$ cd Postman/
+$ ./Postman</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><span class="image"><img src="img/postman-sample.png" alt="postman sample.png"></span></p>
+</div>
+</div>
 </div>
 <div class="sect1">
 <h2 id="_fuse_on_karaf">Fuse on Karaf</h2>
@@ -510,6 +655,127 @@ _g_\:admingroup = group,admin,manager,viewer,systembundles,ssh</code></pre>
 </div>
 </div>
 </div>
+<div class="sect1">
+<h2 id="_jboss_fuse_6_3">JBoss Fuse 6.3</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="__">&#x7EC4;&#x5EFA;&#x660E;&#x7EC6;</h3>
+<table class="tableblock frame-all grid-all spread">
+<colgroup>
+<col style="width: 18.1818%;">
+<col style="width: 18.1818%;">
+<col style="width: 45.4545%;">
+<col style="width: 18.1819%;">
+</colgroup>
+<thead>
+<tr>
+<th class="tableblock halign-left valign-top">&#x7C7B;&#x578B;</th>
+<th class="tableblock halign-left valign-top">&#x5B89;&#x88C5;&#x5305;</th>
+<th class="tableblock halign-left valign-top">&#x7EC4;&#x4EF6;</th>
+<th class="tableblock halign-left valign-top">&#x4F9D;&#x8D56;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JBoss Fuse on Karaf</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">jboss-fuse-karaf-6.3.0.redhat-187.zip</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="ulist">
+<ul>
+<li>
+<p>Apache Camel</p>
+</li>
+<li>
+<p>SwitchYard</p>
+</li>
+<li>
+<p>Apache CXF</p>
+</li>
+<li>
+<p>Apache ActiveMQ</p>
+</li>
+<li>
+<p>Integration Pack</p>
+</li>
+<li>
+<p>JON Pack</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">&#x65E0;</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JBoss Fuse on JBoss EAP</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">fuse-eap-installer-6.3.0.redhat-187.jar</p></td>
+<td class="tableblock halign-left valign-top"><div><div class="ulist">
+<ul>
+<li>
+<p>Apache Camel</p>
+</li>
+<li>
+<p>SwitchYard</p>
+</li>
+<li>
+<p>BPEL/Riftsaw</p>
+</li>
+<li>
+<p>Integration Pack</p>
+</li>
+<li>
+<p>JON Pack</p>
+</li>
+</ul>
+</div></div></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">JBoss EAP 6.4</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="sect2">
+<h3 id="_fuse_on_apache_karaf">Fuse on Apache Karaf</h3>
+<div class="listingblock">
+<div class="title"><strong>JBoss Fuse 6.3 Install</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">$ unzip jboss-fuse-karaf-<span class="hljs-number">6.3</span>.0.redhat-<span class="hljs-number">187</span>.zip &amp;&amp; cd jboss-fuse-<span class="hljs-number">6.3</span>.0.redhat-<span class="hljs-number">187</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title"><strong>Edit etc/users.properties, comment out</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">admin=admin,admin,manager,viewer,Monitor, Operator, Maintainer, Deployer, Auditor, Administrator, SuperUser</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title"><strong>Start JBoss Fuse</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">./bin/start</code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title"><strong>Edit etc/system.properties, change the AMQ default bind host</strong></div>
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">activemq.host = <span class="hljs-number">0.0</span>.0.0</code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Login into <a href="http://localhost:8181/" class="bare" target="_blank">http://localhost:8181/</a> with <code>admin</code>/<code>admin</code> for JBoss Fuse Management and runting monitor.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="__feature">&#x5B89;&#x88C5;&#x5E38;&#x89C1; Feature</h3>
+<div class="listingblock">
+<div class="content">
+<pre class="highlight"><code class="language-java" data-lang="java">./bin/client
+features:install camel-sql
+features:install camel-jackson
+features:install camel-http
+features:install camel-jsonpath
+features:install camel-jetty
+features:install camel-xmljson</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
                                 
                                 </section>
                             
@@ -536,12 +802,12 @@ _g_\:admingroup = group,admin,manager,viewer,systembundles,ssh</code></pre>
 
             
                 
-                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Fuse 7">
+                <a href="./" class="navigation navigation-prev " aria-label="Previous page: Fuse">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="../labs.html" class="navigation navigation-next " aria-label="Next page: LABS">
+                <a href="getstart.html" class="navigation navigation-next " aria-label="Next page: 快速开始">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -552,7 +818,7 @@ _g_\:admingroup = group,admin,manager,viewer,systembundles,ssh</code></pre>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"软件安装","level":"1.2.1","depth":2,"next":{"title":"LABS","level":"1.2.2","depth":2,"path":"labs.adoc","ref":"labs.adoc","articles":[{"title":"Split and Transform Files","level":"1.2.2.1","depth":3,"path":"file-split-transform/README.adoc","ref":"file-split-transform/README.adoc","articles":[]},{"title":"Split and Transform REST","level":"1.2.2.2","depth":3,"path":"rest-split-transform-amq/README.adoc","ref":"rest-split-transform-amq/README.adoc","articles":[]},{"title":"Publish Records and Fix Errors","level":"1.2.2.3","depth":3,"path":"rest-publish-and-fix-errors/README.adoc","ref":"rest-publish-and-fix-errors/README.adoc","articles":[]},{"title":"Enrich Content and Aggregate Data","level":"1.2.2.4","depth":3,"path":"enrich-content-rest-and-ws-microservices/README.adoc","ref":"enrich-content-rest-and-ws-microservices/README.adoc","articles":[]},{"title":"Migrate Legacy SOAP Services","level":"1.2.2.5","depth":3,"path":"legacy-soap-rest-wrapper/README.adoc","ref":"legacy-soap-rest-wrapper/README.adoc","articles":[]}]},"previous":{"title":"Fuse 7","level":"1.2","depth":1,"path":"fuse/README.adoc","ref":"fuse/README.adoc","articles":[{"title":"软件安装","level":"1.2.1","depth":2,"path":"fuse/software.adoc","ref":"fuse/software.adoc","articles":[]},{"title":"LABS","level":"1.2.2","depth":2,"path":"labs.adoc","ref":"labs.adoc","articles":[{"title":"Split and Transform Files","level":"1.2.2.1","depth":3,"path":"file-split-transform/README.adoc","ref":"file-split-transform/README.adoc","articles":[]},{"title":"Split and Transform REST","level":"1.2.2.2","depth":3,"path":"rest-split-transform-amq/README.adoc","ref":"rest-split-transform-amq/README.adoc","articles":[]},{"title":"Publish Records and Fix Errors","level":"1.2.2.3","depth":3,"path":"rest-publish-and-fix-errors/README.adoc","ref":"rest-publish-and-fix-errors/README.adoc","articles":[]},{"title":"Enrich Content and Aggregate Data","level":"1.2.2.4","depth":3,"path":"enrich-content-rest-and-ws-microservices/README.adoc","ref":"enrich-content-rest-and-ws-microservices/README.adoc","articles":[]},{"title":"Migrate Legacy SOAP Services","level":"1.2.2.5","depth":3,"path":"legacy-soap-rest-wrapper/README.adoc","ref":"legacy-soap-rest-wrapper/README.adoc","articles":[]}]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{"GUID":"na39","OCP_USER_ID":"ksoong-redhat.com","copyrightYear":"2018","copyrightHolder":"Kylin Soong"},"plugins":["collapsible-menu","donate","-sharing","sharing-plus","splitter","back-to-top-button","edit-link"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Kylin Soong 2018","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"collapsible-menu":{},"splitter":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"donate":{"alipay":"http://ksoong.org/docs/content/images/alipay.png","alipayText":"支付宝捐赠","button":"赞赏","title":"","wechat":"http://ksoong.org/docs/content/images/wechat.png","wechatText":"微信捐赠"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"sharing":{"weibo":true,"linkedin":true,"google":true,"facebook":true,"all":["facebook","google","linkedin","weibo"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/kylinsoong/fuse-get-started"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css"}},"file":{"path":"fuse/software.adoc","mtime":"2019-01-19T16:08:14.509Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2019-01-28T14:59:51.030Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"软件安装","level":"1.2.1","depth":2,"next":{"title":"快速开始","level":"1.2.2","depth":2,"path":"fuse/getstart.adoc","ref":"fuse/getstart.adoc","articles":[{"title":"Format/Bridge/Expose REST","level":"1.2.2.1","depth":3,"path":"fuse/gs-fis-rest.adoc","ref":"fuse/gs-fis-rest.adoc","articles":[]},{"title":"报文格式转换","level":"1.2.2.2","depth":3,"path":"fuse/gs-data-transformation.adoc","ref":"fuse/gs-data-transformation.adoc","articles":[]},{"title":"SOAP 2 REST","level":"1.2.2.3","depth":3,"path":"fuse/gs-fis-soap2rest.adoc","ref":"fuse/gs-fis-soap2rest.adoc","articles":[]},{"title":"SSO, 3Scale 集成","level":"1.2.2.4","depth":3,"path":"fuse/sso-3scale.adoc","ref":"fuse/sso-3scale.adoc","articles":[]}]},"previous":{"title":"Fuse","level":"1.2","depth":1,"path":"fuse/README.adoc","ref":"fuse/README.adoc","articles":[{"title":"软件安装","level":"1.2.1","depth":2,"path":"fuse/software.adoc","ref":"fuse/software.adoc","articles":[]},{"title":"快速开始","level":"1.2.2","depth":2,"path":"fuse/getstart.adoc","ref":"fuse/getstart.adoc","articles":[{"title":"Format/Bridge/Expose REST","level":"1.2.2.1","depth":3,"path":"fuse/gs-fis-rest.adoc","ref":"fuse/gs-fis-rest.adoc","articles":[]},{"title":"报文格式转换","level":"1.2.2.2","depth":3,"path":"fuse/gs-data-transformation.adoc","ref":"fuse/gs-data-transformation.adoc","articles":[]},{"title":"SOAP 2 REST","level":"1.2.2.3","depth":3,"path":"fuse/gs-fis-soap2rest.adoc","ref":"fuse/gs-fis-soap2rest.adoc","articles":[]},{"title":"SSO, 3Scale 集成","level":"1.2.2.4","depth":3,"path":"fuse/sso-3scale.adoc","ref":"fuse/sso-3scale.adoc","articles":[]}]},{"title":"LABS","level":"1.2.3","depth":2,"path":"labs.adoc","ref":"labs.adoc","articles":[{"title":"Split and Transform Files","level":"1.2.3.1","depth":3,"path":"file-split-transform/README.adoc","ref":"file-split-transform/README.adoc","articles":[]},{"title":"Split and Transform REST","level":"1.2.3.2","depth":3,"path":"rest-split-transform-amq/README.adoc","ref":"rest-split-transform-amq/README.adoc","articles":[]},{"title":"Publish Records and Fix Errors","level":"1.2.3.3","depth":3,"path":"rest-publish-and-fix-errors/README.adoc","ref":"rest-publish-and-fix-errors/README.adoc","articles":[]},{"title":"Enrich Content and Aggregate Data","level":"1.2.3.4","depth":3,"path":"enrich-content-rest-and-ws-microservices/README.adoc","ref":"enrich-content-rest-and-ws-microservices/README.adoc","articles":[]},{"title":"Migrate Legacy SOAP Services","level":"1.2.3.5","depth":3,"path":"legacy-soap-rest-wrapper/README.adoc","ref":"legacy-soap-rest-wrapper/README.adoc","articles":[]}]},{"title":"Fuse Online","level":"1.2.4","depth":2,"path":"fuse/fuse-online.adoc","ref":"fuse/fuse-online.adoc","articles":[]},{"title":"All In One","level":"1.2.5","depth":2,"path":"fuse/fuse-all-in-one.adoc","ref":"fuse/fuse-all-in-one.adoc","articles":[]},{"title":"IBM Maximo SAP Integration","level":"1.2.6","depth":2,"path":"fuse/camel-maximo-sap.adoc","ref":"fuse/camel-maximo-sap.adoc","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{"GUID":"na39","OCP_USER_ID":"ksoong-redhat.com","copyrightYear":"2018","copyrightHolder":"Kylin Soong"},"plugins":["collapsible-menu","donate","-sharing","sharing-plus","splitter","back-to-top-button","edit-link"],"pluginsConfig":{"tbfed-pagefooter":{"copyright":"Copyright &copy Kylin Soong 2018","modify_label":"该文件修订时间：","modify_format":"YYYY-MM-DD HH:mm:ss"},"collapsible-menu":{},"splitter":{},"search":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"donate":{"alipay":"http://ksoong.org/docs/content/images/alipay.png","alipayText":"支付宝捐赠","button":"赞赏","title":"","wechat":"http://ksoong.org/docs/content/images/wechat.png","wechatText":"微信捐赠"},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"back-to-top-button":{},"sharing":{"weibo":true,"linkedin":true,"google":true,"facebook":true,"all":["facebook","google","linkedin","weibo"]},"edit-link":{"label":"Edit This Page","base":"https://github.com/kylinsoong/fuse-get-started"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css"}},"file":{"path":"fuse/software.adoc","mtime":"2019-03-02T13:12:16.114Z","type":"asciidoc"},"gitbook":{"version":"3.2.3","time":"2019-03-02T13:12:26.481Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
