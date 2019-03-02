@@ -4,11 +4,11 @@
     xmlns:cxf="http://camel.apache.org/schema/cxf"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd             http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd      http://camel.apache.org/schema/cxf http://camel.apache.org/schema/cxf/camel-cxf-spring.xsd">
     <cxf:cxfEndpoint
-        address="http://mock-soap-service-mock.192.168.42.107.nip.io:80/services"
+        address="http://mock-soap-service.apps.example.com/services"
         endpointName="CountriesPortSoap11" id="getCountry"
         serviceClass="org.jboss.fis.mock_soap_service.CountriesPort"
         serviceName="tns:CountriesPortService"
-        wsdlURL="http://mock-soap-service-mock.192.168.42.107.nip.io/services/countries.wsdl" xmlns:tns="http://jboss.org/fis/mock-soap-service"/>
+        wsdlURL="http://mock-soap-service.apps.example.com/services/countries.wsdl" xmlns:tns="http://jboss.org/fis/mock-soap-service"/>
     <camelContext id="camel" xmlns="http://camel.apache.org/schema/spring">
         <restConfiguration component="netty4-http" host="0.0.0.0" port="10000"/>
         <rest id="rest-0cb38aea-7b44-4e6d-ad45-4db061081021" path="/rest">
